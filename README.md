@@ -12,13 +12,14 @@ to its authors and contributors. This is not an official release of that project
 
 It parses templating languages such as ERB and EJS, in which scripting code is embedded in text with the delimiters
 `<%` and `%>`. This fork keeps the grammar of upstream's version 0.25.0 and generates the parser with the
-[WillBooster/tree-sitter](https://github.com/WillBooster/tree-sitter) generator at ABI 16, whose compact parse tables
-need that fork's runtime.
+[WillBooster/tree-sitter](https://github.com/WillBooster/tree-sitter) generator. The parser loads only with that fork's runtime, version 2.0.0 or later
+([willbooster-tree-sitter](https://crates.io/crates/willbooster-tree-sitter),
+[@willbooster/web-tree-sitter](https://www.npmjs.com/package/@willbooster/web-tree-sitter)); upstream's runtime rejects it.
 
 ## Usage
 
 The npm package ships `tree-sitter-embedded_template.wasm` for
-[@willbooster/web-tree-sitter](https://www.npmjs.com/package/@willbooster/web-tree-sitter) version 1.4.3 or later, which runs in Node.js, Bun, browsers, and Cloudflare Workers. In Node.js and Bun, load the grammar from its path:
+[@willbooster/web-tree-sitter](https://www.npmjs.com/package/@willbooster/web-tree-sitter) version 2.0.0 or later, which runs in Node.js, Bun, browsers, and Cloudflare Workers. In Node.js and Bun, load the grammar from its path:
 
 ```js
 import { fileURLToPath } from 'node:url';
@@ -66,7 +67,7 @@ fuzzed with:
 
 ```toml
 [dependencies]
-tree-sitter = { package = "willbooster-tree-sitter", version = "1.4.3" }
+tree-sitter = { package = "willbooster-tree-sitter", version = "2.0.0" }
 tree-sitter-embedded-template = { package = "willbooster-tree-sitter-embedded-template", version = "1" }
 ```
 
@@ -93,7 +94,7 @@ not the ones this package ships with. Its first run downloads that CLI from the 
 with `cargo` (whose build runs the CMake that `mise.toml` pins) when the download fails or the release has no binary that runs here. Run other CLI commands through it as
 well (e.g. `script/tree-sitter parse --grammar-path . file.erb`).
 
-`bun run generate` records a fresh ABI 16 generation profile from the applicable `test/corpus` cases, then generates
+`bun run generate` records a fresh generation profile from the applicable `test/corpus` cases, then generates
 compact parser tables. It would also profile files tracked in `examples/`, but this repository tracks none: the
 directory holds only the clones `script/parse-examples` makes. The parser also embeds metadata from `tree-sitter.json`.
 After changing a grammar, `tree-sitter.json`, or a corpus case, regenerate and commit `src/`.
