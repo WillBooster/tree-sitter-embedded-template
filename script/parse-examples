@@ -64,6 +64,13 @@ if ! grep -q '^Total parses' "$output"; then
   exit 1
 fi
 grep '^Total parses' "$output"
+# With an empty known-failures.txt, a run that parses no file would pass, so every file found must have been parsed.
+total=$(sed -n 's/^Total parses: \([0-9]*\);.*/\1/p' "$output")
+expected=$(grep -c . "$files" || true)
+if [[ $expected == 0 || $total != "$expected" ]]; then
+  echo "Parsed $total of $expected example files" >&2
+  exit 1
+fi
 # A timeout depends on the machine, so it is no expected failure.
 if grep -q 'timed out' "$output"; then
   echo 'These files exceeded the parse timeout; known-failures.txt is left unchanged:' >&2
