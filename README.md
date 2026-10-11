@@ -93,10 +93,10 @@ not the ones this package ships with. Its first run downloads that CLI from the 
 with `cargo` (whose build runs the CMake that `mise.toml` pins) when the download fails or the release has no binary that runs here. Run other CLI commands through it as
 well (e.g. `script/tree-sitter parse --grammar-path . file.erb`).
 
-`bun run generate` records a fresh ABI 16 generation profile from the applicable `test/corpus` cases and Git-tracked
-files in `examples/`, then generates compact parser tables. The parser also embeds metadata from `tree-sitter.json`. After changing a grammar,
-`tree-sitter.json`, a corpus case, or a tracked example,
-regenerate and commit `src/`. Stage added or removed examples with `git add -A examples` before generation so the profile uses the intended file list.
+`bun run generate` records a fresh ABI 16 generation profile from the applicable `test/corpus` cases, then generates
+compact parser tables. It would also profile files tracked in `examples/`, but this repository tracks none: the
+directory holds only the clones `script/parse-examples` makes. The parser also embeds metadata from `tree-sitter.json`.
+After changing a grammar, `tree-sitter.json`, or a corpus case, regenerate and commit `src/`.
 Profiles in `.tmp/generation-profiles/` are temporary and must not be committed. `bun run build-wasm`, `bun run build/ci`,
 and the release build regenerate the parsers before compiling them.
 
