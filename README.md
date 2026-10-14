@@ -11,7 +11,8 @@ Embedded template grammar for [tree-sitter](https://github.com/tree-sitter/tree-
 to its authors and contributors. This is not an official release of that project.
 
 It parses templating languages such as ERB and EJS, in which scripting code is embedded in text with the delimiters
-`<%` and `%>`. This fork keeps the grammar of upstream's version 0.25.0 and generates the parser with the
+`<%` and `%>`. This fork extends upstream's version 0.25.0 grammar with EJS output-tag whitespace slurping.
+It generates the parser with the
 [WillBooster/tree-sitter](https://github.com/WillBooster/tree-sitter) generator. The parser loads only with that fork's runtime, version 2.0.0 or later
 ([willbooster-tree-sitter](https://crates.io/crates/willbooster-tree-sitter),
 [@willbooster/web-tree-sitter](https://www.npmjs.com/package/@willbooster/web-tree-sitter)); upstream's runtime rejects it.
