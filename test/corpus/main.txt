@@ -175,3 +175,15 @@ Empty directives
   (content)
   (directive)
 )
+
+==================
+Output directives with whitespace-slurping closers
+==================
+<%=_%><%-_%>
+
+---
+
+(template
+  (output_directive)
+  (output_directive)
+  (content))
