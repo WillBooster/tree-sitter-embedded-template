@@ -64,8 +64,12 @@ parser.setLanguage(await Language.load(grammar));
 The package also ships `grammar.js`, the queries in `queries/`, and the node types in `src/node-types.json`.
 
 For HTML Embedded Perl templates, select `queries/injections-ep.scm` (or `INJECTIONS_EP_QUERY` in Rust).
-CLI language discovery associates `.ep` files with the `text.html.ep` scope. The host must provide HTML and Perl
-parsers and process combined injections. This supports the existing angle-delimited tags, such as
+CLI language discovery associates `.ep` files with the `text.html.ep` scope. The host must process combined injections
+and provide HTML and Perl parsers generated with WillBooster/tree-sitter, matching this runtime's ABI.
+Use `@willbooster/tree-sitter-html` or `willbooster-tree-sitter-html` for HTML. For Perl, generate a Perl grammar
+with this repository's `script/tree-sitter generate` from the Perl grammar directory, then build and register it
+with the host as `perl`; this package does not supply that parser. Upstream-generated parsers cannot load in this runtime.
+With these parsers configured, the query supports the existing angle-delimited tags, such as
 `<% my $name = "World"; %><p><%= $name %></p>`; it is not a full Mojo::Template parser.
 Perl lines beginning with `%`, template capture markers (`begin`/`end`), custom delimiters, and whitespace-trimming
 `=%>` on non-output directives are not supported.
