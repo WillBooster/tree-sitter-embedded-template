@@ -11,7 +11,8 @@ Embedded template grammar for [tree-sitter](https://github.com/tree-sitter/tree-
 to its authors and contributors. This is not an official release of that project.
 
 It parses templating languages such as ERB and EJS, in which scripting code is embedded in text with the delimiters
-`<%` and `%>`. This fork extends upstream's version 0.25.0 grammar with EJS output-tag whitespace slurping.
+`<%` and `%>`. This fork extends upstream's version 0.25.0 grammar with EJS output-tag whitespace slurping
+and HTML/Perl injections for angle-delimited Embedded Perl tags.
 It generates the parser with the
 [WillBooster/tree-sitter](https://github.com/WillBooster/tree-sitter) generator. The parser loads only with that fork's runtime, version 2.0.0 or later
 ([willbooster-tree-sitter](https://crates.io/crates/willbooster-tree-sitter),
@@ -61,6 +62,13 @@ parser.setLanguage(await Language.load(grammar));
 ```
 
 The package also ships `grammar.js`, the queries in `queries/`, and the node types in `src/node-types.json`.
+
+For HTML Embedded Perl templates, select `queries/injections-ep.scm` (or `INJECTIONS_EP_QUERY` in Rust).
+CLI language discovery associates `.ep` files with the `text.html.ep` scope. The host must provide HTML and Perl
+parsers and process combined injections. This supports the existing angle-delimited tags, such as
+`<% my $name = "World"; %><p><%= $name %></p>`; it is not a full Mojo::Template parser.
+Perl lines beginning with `%`, template capture markers (`begin`/`end`), custom delimiters, and whitespace-trimming
+`=%>` on non-output directives are not supported.
 
 In Rust, depend on the [crate](https://crates.io/crates/willbooster-tree-sitter-embedded-template) and on
 [willbooster-tree-sitter](https://crates.io/crates/willbooster-tree-sitter), the runtime this package is tested and
