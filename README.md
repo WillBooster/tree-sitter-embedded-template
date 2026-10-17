@@ -64,8 +64,10 @@ parser.setLanguage(await Language.load(grammar));
 The package also ships `grammar.js`, the queries in `queries/`, and the node types in `src/node-types.json`.
 
 For HTML Embedded Perl templates, select `queries/injections-ep.scm` (or `INJECTIONS_EP_QUERY` in Rust).
-CLI language discovery associates `.ep` files with the `text.html.ep` scope. The host must process combined injections
-and provide HTML and Perl parsers generated with WillBooster/tree-sitter, matching this runtime's ABI.
+CLI language discovery associates every `.ep` file with the `text.html.ep` scope, including non-HTML templates
+such as `mail.txt.ep`. The query always treats template content as HTML; configure a different content injection
+for non-HTML formats. The host must process combined injections and provide HTML and Perl parsers generated
+with WillBooster/tree-sitter, matching this runtime's ABI.
 Use `@willbooster/tree-sitter-html` or `willbooster-tree-sitter-html` for HTML. For Perl, generate a Perl grammar
 with this repository's `script/tree-sitter generate` from the Perl grammar directory, then build and register it
 with the host as `perl`; this package does not supply that parser. Upstream-generated parsers cannot load in this runtime.
@@ -146,3 +148,4 @@ with libFuzzer and sanitizers (`.github/workflows/robustness.yml`).
 - [EJS Documentation](https://ejs.co/#docs)
 - [etlua Documentation](https://github.com/leafo/etlua)
 - [Eta Documentation](https://eta.js.org/docs)
+- [EP Documentation](https://docs.mojolicious.org/Mojo/Template)
