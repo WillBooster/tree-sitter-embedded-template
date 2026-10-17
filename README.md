@@ -68,9 +68,12 @@ CLI language discovery associates every `.ep` file with the `text.html.ep` scope
 such as `mail.txt.ep`. The query always treats template content as HTML; configure a different content injection
 for non-HTML formats. The host must process combined injections and provide HTML and Perl parsers generated
 with WillBooster/tree-sitter, matching this runtime's ABI.
-Use `@willbooster/tree-sitter-html` or `willbooster-tree-sitter-html` for HTML. For Perl, generate a Perl grammar
-with this repository's `script/tree-sitter generate` from the Perl grammar directory, then build and register it
-with the host as `perl`; this package does not supply that parser. Upstream-generated parsers cannot load in this runtime.
+Use `@willbooster/tree-sitter-html` or `willbooster-tree-sitter-html` for HTML. For Perl, check out this repository
+and [tree-sitter-perl/tree-sitter-perl](https://github.com/tree-sitter-perl/tree-sitter-perl). From the Perl checkout
+as the working directory, run `<embedded-template-checkout>/script/tree-sitter generate grammar.js`, replacing
+`<embedded-template-checkout>` with this repository's absolute checkout path. Then build the generated parser for
+your host and register it as `perl`. The npm package and Rust crate include neither this script nor a Perl parser.
+Upstream-generated parsers cannot load in this runtime.
 With these parsers configured, the query supports the existing angle-delimited tags, such as
 `<% my $name = "World"; %><p><%= $name %></p>`; it is not a full Mojo::Template parser.
 Perl lines beginning with `%`, template capture markers (`begin`/`end`), custom delimiters, and whitespace-trimming
