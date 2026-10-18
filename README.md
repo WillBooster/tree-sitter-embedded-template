@@ -69,7 +69,9 @@ For HTML Embedded Perl templates, select `queries/injections-ep.scm` (or `INJECT
 CLI language discovery associates every `.ep` file with the `text.html.ep` scope, including non-HTML templates
 such as `mail.txt.ep`. The query always treats template content as HTML; configure a different content injection
 for non-HTML formats. The host must process combined injections and provide HTML and Perl parsers generated
-with WillBooster/tree-sitter, matching this runtime's ABI.
+with WillBooster/tree-sitter, matching this runtime's ABI. The `tree-sitter highlight` command of WillBooster/tree-sitter
+orders highlights from these combined injections correctly from version 2.0.29; earlier versions can drop the
+highlights of the first region.
 Use `@willbooster/tree-sitter-html` or `willbooster-tree-sitter-html` for HTML. For Perl, check out this repository
 and [tree-sitter-perl/tree-sitter-perl](https://github.com/tree-sitter-perl/tree-sitter-perl). From the Perl checkout
 as the working directory, run `<embedded-template-checkout>/script/tree-sitter generate grammar.js`, replacing
