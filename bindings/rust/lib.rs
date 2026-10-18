@@ -45,6 +45,9 @@ pub const INJECTIONS_EJS_QUERY: &str = include_str!("../../queries/injections-ej
 /// The injections query for this grammar to inject HTML/Ruby.
 pub const INJECTIONS_ERB_QUERY: &str = include_str!("../../queries/injections-erb.scm");
 
+/// The injections query for angle-delimited Embedded Perl tags in HTML.
+pub const INJECTIONS_EP_QUERY: &str = include_str!("../../queries/injections-ep.scm");
+
 #[cfg(test)]
 mod tests {
     #[test]
