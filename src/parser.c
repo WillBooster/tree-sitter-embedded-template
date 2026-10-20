@@ -7,7 +7,7 @@
 #endif
 
 #define TS_GENERATION_PROFILED 1
-#define LANGUAGE_VERSION 0x57420001
+#define LANGUAGE_VERSION 0x57420006
 #define STATE_COUNT 29
 #define LARGE_STATE_COUNT 14
 #define LEX_STATE_COUNT 40
@@ -344,35 +344,36 @@ static const uint16_t ts_lex_advance_map_0[] = {
   }
 
 static bool ts_lex(TSLexer *lexer, TSStateId state) {
+  UNUSED TSLexerPosition start_tags[1];
   START_LEXER();
   eof = lookahead == 0 && lexer->eof(lexer);
   switch (state) {
     case 0:
       if (eof) ADVANCE(14);
-      if (lookahead == '%') ADVANCE(16);
-      if (lookahead == '-') ADVANCE(17);
-      if (lookahead == '=') ADVANCE(18);
-      if (lookahead == '_') ADVANCE(19);
-      if (!eof) ADVANCE(20);
+      if (lookahead == '%') { lexer->get_position(lexer, &start_tags[0]); ADVANCE(16); }
+      if (lookahead == '-') { lexer->get_position(lexer, &start_tags[0]); ADVANCE(17); }
+      if (lookahead == '=') { lexer->get_position(lexer, &start_tags[0]); ADVANCE(18); }
+      if (lookahead == '_') { lexer->get_position(lexer, &start_tags[0]); ADVANCE(19); }
+      if (!eof) { lexer->get_position(lexer, &start_tags[0]); ADVANCE(20); }
       END_STATE();
     case 1:
       if (eof) ADVANCE(14);
-      if (lookahead == '<') ADVANCE(22);
-      if (!eof) ADVANCE(23);
+      if (lookahead == '<') { lexer->get_position(lexer, &start_tags[0]); ADVANCE(22); }
+      if (!eof) { lexer->get_position(lexer, &start_tags[0]); ADVANCE(23); }
       END_STATE();
     case 2:
-      if (lookahead == '%') ADVANCE(16);
-      if (lookahead == '-') ADVANCE(17);
-      if (lookahead == '=') ADVANCE(15);
-      if (lookahead == '_') ADVANCE(19);
-      if (!eof) ADVANCE(20);
+      if (lookahead == '%') { lexer->get_position(lexer, &start_tags[0]); ADVANCE(16); }
+      if (lookahead == '-') { lexer->get_position(lexer, &start_tags[0]); ADVANCE(17); }
+      if (lookahead == '=') { lexer->get_position(lexer, &start_tags[0]); ADVANCE(15); }
+      if (lookahead == '_') { lexer->get_position(lexer, &start_tags[0]); ADVANCE(19); }
+      if (!eof) { lexer->get_position(lexer, &start_tags[0]); ADVANCE(20); }
       END_STATE();
     case 3:
-      if (lookahead == '%') ADVANCE(16);
+      if (lookahead == '%') { lexer->get_position(lexer, &start_tags[0]); ADVANCE(16); }
       if (lookahead == '-' ||
           lookahead == '=' ||
-          lookahead == '_') ADVANCE(15);
-      if (!eof) ADVANCE(20);
+          lookahead == '_') { lexer->get_position(lexer, &start_tags[0]); ADVANCE(15); }
+      if (!eof) { lexer->get_position(lexer, &start_tags[0]); ADVANCE(20); }
       END_STATE();
     case 4:
       if (lookahead == '>') ADVANCE(21);
@@ -408,22 +409,27 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(ts_builtin_sym_end);
       END_STATE();
     case 15:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(aux_sym_code_token1);
       END_STATE();
     case 16:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(aux_sym_code_token1);
       if (lookahead == '%') ADVANCE(4);
       if (lookahead == '>') ADVANCE(29);
       END_STATE();
     case 17:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(aux_sym_code_token1);
       if (lookahead == '%') ADVANCE(5);
       END_STATE();
     case 18:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(aux_sym_code_token1);
       if (lookahead == '%') ADVANCE(6);
       END_STATE();
     case 19:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(aux_sym_code_token1);
       if (lookahead == '%') ADVANCE(7);
       END_STATE();
@@ -434,12 +440,15 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '-' &&
           lookahead != '=' &&
           lookahead != '_') TS_LEX_REPEAT(false, ts_lex_state_20);
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(aux_sym_code_token1);
       END_STATE();
     case 21:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(anon_sym_PERCENT_PERCENT_GT);
       END_STATE();
     case 22:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(aux_sym_content_token1);
       if (lookahead == '%') ADVANCE(25);
       END_STATE();
@@ -447,58 +456,75 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       ts_lex_state_23:
       if (!eof &&
           lookahead != '<') TS_LEX_REPEAT(false, ts_lex_state_23);
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(aux_sym_content_token1);
       END_STATE();
     case 24:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(anon_sym_LT_PERCENT_PERCENT);
       END_STATE();
     case 25:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(anon_sym_LT_PERCENT);
       TS_LEX_ADVANCE_MAP_SORTED(ts_lex_advance_map_0);
       END_STATE();
     case 26:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(anon_sym_LT_PERCENT_);
       END_STATE();
     case 27:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(anon_sym_LT_PERCENT_PIPE);
       if (lookahead == '=') ADVANCE(34);
       END_STATE();
     case 28:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(anon_sym_LT_PERCENT_TILDE);
       END_STATE();
     case 29:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(anon_sym_PERCENT_GT);
       END_STATE();
     case 30:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(anon_sym_DASH_PERCENT_GT);
       END_STATE();
     case 31:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(anon_sym__PERCENT_GT);
       END_STATE();
     case 32:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(anon_sym_LT_PERCENT_EQ);
       if (lookahead == '=') ADVANCE(33);
       END_STATE();
     case 33:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(anon_sym_LT_PERCENT_EQ_EQ);
       END_STATE();
     case 34:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(anon_sym_LT_PERCENT_PIPE_EQ);
       if (lookahead == '=') ADVANCE(35);
       END_STATE();
     case 35:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(anon_sym_LT_PERCENT_PIPE_EQ_EQ);
       END_STATE();
     case 36:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(anon_sym_LT_PERCENT_DASH);
       END_STATE();
     case 37:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(anon_sym_EQ_PERCENT_GT);
       END_STATE();
     case 38:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(anon_sym_LT_PERCENT_POUND);
       END_STATE();
     case 39:
+      lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(anon_sym_LT_PERCENTgraphql);
       END_STATE();
     default:
@@ -507,10 +533,10 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
 }
 
 static const TSLexerMode ts_lex_modes[] = {
-  [0] = {.lex_state = 0, .external_lex_state = 0, .reserved_word_set_id = 0},
-  [1] = {.lex_state = 1, .external_lex_state = 0, .reserved_word_set_id = 0},
-  [2] = {.lex_state = 2, .external_lex_state = 0, .reserved_word_set_id = 0},
-  [3] = {.lex_state = 3, .external_lex_state = 0, .reserved_word_set_id = 0},
+  [0] = {.lex_state = 0, .lex_state_after_extra = 0, .external_lex_state = 0, .external_lex_state_after_extra = 0, .reserved_word_set_id = 0},
+  [1] = {.lex_state = 1, .lex_state_after_extra = 1, .external_lex_state = 0, .external_lex_state_after_extra = 0, .reserved_word_set_id = 0},
+  [2] = {.lex_state = 2, .lex_state_after_extra = 2, .external_lex_state = 0, .external_lex_state_after_extra = 0, .reserved_word_set_id = 0},
+  [3] = {.lex_state = 3, .lex_state_after_extra = 3, .external_lex_state = 0, .external_lex_state_after_extra = 0, .reserved_word_set_id = 0},
 };
 
 static const uint16_t ts_lex_mode_ids[STATE_COUNT] = {
