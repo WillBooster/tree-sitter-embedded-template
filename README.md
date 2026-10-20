@@ -16,14 +16,16 @@ It parses templating languages such as ERB and EJS, in which scripting code is e
 `<%` and `%>`. This fork extends upstream's version 0.25.0 grammar with EJS output-tag whitespace slurping
 and HTML/Perl injections for angle-delimited Embedded Perl tags.
 It generates the parser with the
-[WillBooster/tree-sitter](https://github.com/WillBooster/tree-sitter) generator. The parser loads only with that fork's runtime, version 2.0.0 or later
+[WillBooster/tree-sitter](https://github.com/WillBooster/tree-sitter) generator. The parser loads only with that
+fork's runtime, version 7.0.5 or later in the 7.x series
 ([willbooster-tree-sitter](https://crates.io/crates/willbooster-tree-sitter),
 [@willbooster/web-tree-sitter](https://www.npmjs.com/package/@willbooster/web-tree-sitter)); upstream's runtime rejects it.
 
 ## Usage
 
 The npm package ships `tree-sitter-embedded_template.wasm` for
-[@willbooster/web-tree-sitter](https://www.npmjs.com/package/@willbooster/web-tree-sitter) version 2.0.0 or later, which runs in Node.js, Bun, browsers, and Cloudflare Workers. In Node.js and Bun, load the grammar from its path:
+[@willbooster/web-tree-sitter](https://www.npmjs.com/package/@willbooster/web-tree-sitter) version 7.0.5 or later in the 7.x series, which runs in Node.js, Bun, browsers, and Cloudflare Workers.
+In Node.js and Bun, load the grammar from its path:
 
 ```js
 import { fileURLToPath } from 'node:url';
@@ -69,10 +71,8 @@ For HTML Embedded Perl templates, select `queries/injections-ep.scm` (or `INJECT
 CLI language discovery associates every `.ep` file with the `text.html.ep` scope, including non-HTML templates
 such as `mail.txt.ep`. The query always treats template content as HTML; configure a different content injection
 for non-HTML formats. The host must process combined injections and provide HTML and Perl parsers generated
-with WillBooster/tree-sitter, matching this runtime's ABI. The `tree-sitter highlight` command of WillBooster/tree-sitter
-orders highlights from these combined injections correctly from version 2.0.29; earlier versions can drop the
-highlights of the first region.
-Use `@willbooster/tree-sitter-html` or `willbooster-tree-sitter-html` for HTML. For Perl, check out this repository
+with WillBooster/tree-sitter, matching this runtime's ABI. Use `@willbooster/tree-sitter-html` or
+`willbooster-tree-sitter-html` for HTML. For Perl, check out this repository
 and [tree-sitter-perl/tree-sitter-perl](https://github.com/tree-sitter-perl/tree-sitter-perl). From the Perl checkout
 as the working directory, run `<embedded-template-checkout>/script/tree-sitter generate grammar.js`, replacing
 `<embedded-template-checkout>` with this repository's absolute checkout path. Then build the generated parser for
@@ -89,8 +89,8 @@ fuzzed with:
 
 ```toml
 [dependencies]
-tree-sitter = { package = "willbooster-tree-sitter", version = "2.0.0" }
-tree-sitter-embedded-template = { package = "willbooster-tree-sitter-embedded-template", version = "1" }
+tree-sitter = { package = "willbooster-tree-sitter", version = "7.0.5" }
+tree-sitter-embedded-template = { package = "willbooster-tree-sitter-embedded-template", version = "2" }
 ```
 
 ```rust
