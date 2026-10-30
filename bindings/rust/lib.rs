@@ -36,21 +36,6 @@ pub const LANGUAGE: LanguageFn = unsafe { LanguageFn::from_raw(tree_sitter_embed
 /// [`node-types.json`]: https://tree-sitter.github.io/tree-sitter/using-parsers/6-static-node-types
 pub const NODE_TYPES: &str = include_str!("../../src/node-types.json");
 
-/// The syntax highlighting query for this grammar.
-pub const HIGHLIGHTS_QUERY: &str = include_str!("../../queries/highlights.scm");
-
-/// The injections query for this grammar to inject HTML/JavaScript.
-pub const INJECTIONS_EJS_QUERY: &str = include_str!("../../queries/injections-ejs.scm");
-
-/// The injections query for this grammar to inject HTML/Ruby.
-pub const INJECTIONS_ERB_QUERY: &str = include_str!("../../queries/injections-erb.scm");
-
-/// The injections query for this grammar to inject HTML/Lua.
-pub const INJECTIONS_ETLUA_QUERY: &str = include_str!("../../queries/injections-etlua.scm");
-
-/// The injections query for angle-delimited Embedded Perl tags in HTML.
-pub const INJECTIONS_EP_QUERY: &str = include_str!("../../queries/injections-ep.scm");
-
 #[cfg(test)]
 mod tests {
     #[test]

@@ -5,7 +5,7 @@
 [![Test](https://github.com/WillBooster/tree-sitter-embedded-template/actions/workflows/test.yml/badge.svg)](https://github.com/WillBooster/tree-sitter-embedded-template/actions/workflows/test.yml)
 [![Test rust](https://github.com/WillBooster/tree-sitter-embedded-template/actions/workflows/test-rust.yml/badge.svg)](https://github.com/WillBooster/tree-sitter-embedded-template/actions/workflows/test-rust.yml)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-[![wbfy](https://img.shields.io/badge/wbfy-20.49.0-1e90ff.svg)](https://github.com/WillBooster/shared/tree/main/packages/wbfy)
+[![wbfy](https://img.shields.io/badge/wbfy-20.51.1-1e90ff.svg)](https://github.com/WillBooster/shared/tree/main/packages/wbfy)
 [![crates.io](https://img.shields.io/crates/v/willbooster-tree-sitter-embedded-template.svg)](https://crates.io/crates/willbooster-tree-sitter-embedded-template)
 
 Embedded template grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter), forked from
@@ -13,13 +13,19 @@ Embedded template grammar for [tree-sitter](https://github.com/tree-sitter/tree-
 to its authors and contributors. This is not an official release of that project.
 
 It parses templating languages such as ERB and EJS, in which scripting code is embedded in text with the delimiters
-`<%` and `%>`. This fork extends upstream's version 0.25.0 grammar with EJS output-tag whitespace slurping
-and HTML/Perl injections for angle-delimited Embedded Perl tags.
+`<%` and `%>`. This fork extends upstream's version 0.25.0 grammar with EJS output-tag whitespace slurping.
 It generates the parser with the
 [WillBooster/tree-sitter](https://github.com/WillBooster/tree-sitter) generator. The parser loads only with that
 fork's runtime, version 15.0.0 or later in the 15.x series
 ([willbooster-tree-sitter](https://crates.io/crates/willbooster-tree-sitter),
 [@willbooster/web-tree-sitter](https://www.npmjs.com/package/@willbooster/web-tree-sitter)); upstream's runtime rejects it.
+
+## Support Scope
+
+This fork maintains only full parsing: valid input yields a correct tree, and invalid input yields `ERROR` or `MISSING`
+nodes without crashing, hanging, or taking more than linear time. Incremental parsing works as in upstream tree-sitter
+but is not tested here, and no queries (highlights, locals, injections, tags) are shipped. Node types, field names, and
+the trees that error recovery produces may change; such changes are released as new major versions.
 
 ## Usage
 
@@ -66,23 +72,7 @@ const parser = new Parser();
 parser.setLanguage(await Language.load(grammar));
 ```
 
-The package also ships `grammar.js`, the queries in `queries/`, and the node types in `src/node-types.json`.
-
-For HTML Embedded Perl templates, select `queries/injections-ep.scm` (or `INJECTIONS_EP_QUERY` in Rust).
-CLI language discovery associates every `.ep` file with the `text.html.ep` scope, including non-HTML templates
-such as `mail.txt.ep`. The query always treats template content as HTML; configure a different content injection
-for non-HTML formats. The host must process combined injections and provide HTML and Perl parsers generated
-with WillBooster/tree-sitter, matching this runtime's ABI. Use `@willbooster/tree-sitter-html` or
-`willbooster-tree-sitter-html` for HTML. For Perl, check out this repository
-and [tree-sitter-perl/tree-sitter-perl](https://github.com/tree-sitter-perl/tree-sitter-perl). From the Perl checkout
-as the working directory, run `<embedded-template-checkout>/script/tree-sitter generate grammar.js`, replacing
-`<embedded-template-checkout>` with this repository's absolute checkout path. Then build the generated parser for
-your host and register it as `perl`. The npm package and Rust crate include neither this script nor a Perl parser.
-Upstream-generated parsers cannot load in this runtime.
-With these parsers configured, the query supports the existing angle-delimited tags, such as
-`<% my $name = "World"; %><p><%= $name %></p>`; it is not a full Mojo::Template parser.
-Perl lines beginning with `%`, template capture markers (`begin`/`end`), custom delimiters, and whitespace-trimming
-`=%>` on non-output directives are not supported.
+The package also ships `grammar.js` and the node types in `src/node-types.json`.
 
 In Rust, depend on the [crate](https://crates.io/crates/willbooster-tree-sitter-embedded-template) and on
 [willbooster-tree-sitter](https://crates.io/crates/willbooster-tree-sitter), the runtime this package is tested and
@@ -91,7 +81,7 @@ fuzzed with:
 ```toml
 [dependencies]
 tree-sitter = { package = "willbooster-tree-sitter", version = "15.0.0" }
-tree-sitter-embedded-template = { package = "willbooster-tree-sitter-embedded-template", version = "6" }
+tree-sitter-embedded-template = { package = "willbooster-tree-sitter-embedded-template", version = "7" }
 ```
 
 ```rust
