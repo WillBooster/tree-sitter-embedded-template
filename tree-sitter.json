@@ -7,7 +7,6 @@
       "scope": "text.html.ejs",
       "path": ".",
       "file-types": ["ejs"],
-      "injections": "queries/injections-ejs.scm",
       "injection-regex": "ejs"
     },
     {
@@ -16,7 +15,6 @@
       "scope": "text.html.erb",
       "path": ".",
       "file-types": ["erb"],
-      "injections": "queries/injections-erb.scm",
       "injection-regex": "erb"
     },
     {
@@ -25,7 +23,6 @@
       "scope": "text.html.etlua",
       "path": ".",
       "file-types": ["etlua"],
-      "injections": "queries/injections-etlua.scm",
       "injection-regex": "etlua"
     },
     {
@@ -34,7 +31,6 @@
       "scope": "text.html.ep",
       "path": ".",
       "file-types": ["ep"],
-      "injections": "queries/injections-ep.scm",
       "injection-regex": "ep"
     }
   ],
