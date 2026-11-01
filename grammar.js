@@ -28,7 +28,7 @@ module.exports = grammar({
     directive: $ => seq(
       choice('<%', '<%_', '<%|', '<%~'),
       optional($.code),
-      choice('%>', '-%>', '_%>'),
+      choice('%>', '-%>', '=%>', '_%>'),
     ),
 
     output_directive: $ => seq(
@@ -40,7 +40,7 @@ module.exports = grammar({
     comment_directive: $ => seq(
       '<%#',
       optional(alias($.code, $.comment)),
-      '%>',
+      choice('%>', '-%>', '=%>', '_%>'),
     ),
 
     graphql_directive: $ => seq(
