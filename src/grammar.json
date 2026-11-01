@@ -115,6 +115,10 @@
             },
             {
               "type": "STRING",
+              "value": "=%>"
+            },
+            {
+              "type": "STRING",
               "value": "_%>"
             }
           ]
@@ -209,8 +213,25 @@
           ]
         },
         {
-          "type": "STRING",
-          "value": "%>"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "%>"
+            },
+            {
+              "type": "STRING",
+              "value": "-%>"
+            },
+            {
+              "type": "STRING",
+              "value": "=%>"
+            },
+            {
+              "type": "STRING",
+              "value": "_%>"
+            }
+          ]
         }
       ]
     },
