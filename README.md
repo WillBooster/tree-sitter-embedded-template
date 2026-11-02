@@ -17,7 +17,7 @@ It parses templating languages such as ERB and EJS, in which scripting code is e
 trimming closers on comments, and the `=%>` closer on statements.
 It generates the parser with the
 [WillBooster/tree-sitter](https://github.com/WillBooster/tree-sitter) generator. The parser loads only with that
-fork's runtime, version 15.0.0 or later in the 15.x series
+fork's runtime, version 15.0.0 or later in the 15.x or 16.x series
 ([willbooster-tree-sitter](https://crates.io/crates/willbooster-tree-sitter),
 [@willbooster/web-tree-sitter](https://www.npmjs.com/package/@willbooster/web-tree-sitter)); upstream's runtime rejects it.
 
@@ -31,7 +31,7 @@ the trees that error recovery produces may change; such changes are released as 
 ## Usage
 
 The npm package ships `tree-sitter-embedded_template.wasm` for
-[@willbooster/web-tree-sitter](https://www.npmjs.com/package/@willbooster/web-tree-sitter) version 15.0.0 or later in the 15.x series, which runs in Node.js, Bun, browsers, and Cloudflare Workers.
+[@willbooster/web-tree-sitter](https://www.npmjs.com/package/@willbooster/web-tree-sitter) version 15.0.0 or later in the 15.x or 16.x series, which runs in Node.js, Bun, browsers, and Cloudflare Workers.
 In Node.js and Bun, load the grammar from its path:
 
 ```js
@@ -80,7 +80,7 @@ In Rust, depend on the [crate](https://crates.io/crates/willbooster-tree-sitter-
 fuzzed with:
 
 ```sh
-cargo add willbooster-tree-sitter@15.0.0 --rename tree-sitter
+cargo add willbooster-tree-sitter@16.0.0 --rename tree-sitter
 cargo add willbooster-tree-sitter-embedded-template --rename tree-sitter-embedded-template
 ```
 
