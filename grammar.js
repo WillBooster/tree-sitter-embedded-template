@@ -21,9 +21,9 @@ module.exports = grammar({
       $.content,
     )),
 
-    code: _ => repeat1(choice(/[^%=_-]+|[%=_-]/, '%%>')),
+    code: _ => repeat1(choice(/([^%=_-]|[=_-]{1,3}[^%=_-]|%[^>%=_-])+|[%=_-]/, '%%>')),
 
-    content: _ => prec.right(repeat1(choice(/[^<]+|</, '<%%'))),
+    content: _ => prec.right(repeat1(choice(/([^<]|<[^<%])+|</, '<%%'))),
 
     directive: $ => seq(
       choice('<%', '<%_', '<%|', '<%~'),

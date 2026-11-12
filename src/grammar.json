@@ -37,7 +37,7 @@
         "members": [
           {
             "type": "PATTERN",
-            "value": "[^%=_-]+|[%=_-]"
+            "value": "([^%=_-]|[=_-]{1,3}[^%=_-]|%[^>%=_-])+|[%=_-]"
           },
           {
             "type": "STRING",
@@ -56,7 +56,7 @@
           "members": [
             {
               "type": "PATTERN",
-              "value": "[^<]+|<"
+              "value": "([^<]|<[^<%])+|<"
             },
             {
               "type": "STRING",
