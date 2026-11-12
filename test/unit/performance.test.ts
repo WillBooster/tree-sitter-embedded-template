@@ -30,6 +30,18 @@ test('parses runs of delimiter prefix characters in linear time', { timeout: 60_
   expectLinearTime((count) => `${'<'.repeat(count)}%${'='.repeat(count)}%>`, false);
 });
 
+test('hoists token marking outside character-scanning loops in src/parser.c', () => {
+  const parserSource = fs.readFileSync(path.join(Root, 'src/parser.c'), 'utf8');
+  const repeatBlocks = [...parserSource.matchAll(/ts_lex_state_\d+:[\s\S]*?END_STATE\(\);/g)].map((match) => match[0]);
+  expect(repeatBlocks.length).toBeGreaterThanOrEqual(2);
+  for (const block of repeatBlocks) {
+    const repeatIndex = block.indexOf('TS_LEX_REPEAT(');
+    const acceptIndex = block.indexOf('ACCEPT_TOKEN(');
+    expect(repeatIndex).toBeGreaterThanOrEqual(0);
+    expect(acceptIndex).toBeGreaterThan(repeatIndex);
+  }
+});
+
 // Thread CPU time avoids wall-clock noise from sibling test files and process-wide CPU time from background Wasm
 // compilation and GC threads; 18 leaves headroom above the linear 10x ratio while rejecting ~n^1.25+ superlinear growth.
 function expectLinearTime(buildSource: (count: number) => string, expectedError: boolean): void {

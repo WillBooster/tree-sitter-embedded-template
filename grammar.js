@@ -21,9 +21,12 @@ module.exports = grammar({
       $.content,
     )),
 
-    code: _ => repeat1(choice(/([^%=_-]|[=_-]{1,3}[^%=_-]|%[^>%=_-])+|[%=_-]/, '%%>')),
+    // Keep pure `[^%=_-]+` and `[^<]*` tails outside any outer `(...)+` so the generated lexer loops have no outgoing
+    // transitions to non-accepting states (avoiding per-byte `mark_end` calls), and bound delimiter prefixes (`[=_-]{1,3}`
+    // and `<`) so fallback before `%>`, `<%`, or EOF stays linear.
+    code: _ => repeat1(choice(/[^%=_-]+|[=_-]{1,3}[^%=_-]+|%[^>%=_-][^%=_-]*|[%=_-]/, '%%>')),
 
-    content: _ => prec.right(repeat1(choice(/([^<]|<[^<%])+|</, '<%%'))),
+    content: _ => prec.right(repeat1(choice(/[^<]+|<([^<%][^<]*)?/, '<%%'))),
 
     directive: $ => seq(
       choice('<%', '<%_', '<%|', '<%~'),

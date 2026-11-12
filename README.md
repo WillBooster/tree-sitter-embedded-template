@@ -121,8 +121,9 @@ and the release build regenerate the parsers before compiling them.
   `script/known-failures.txt`, which is empty now. The first run clones the repositories. The example repositories are pinned to commits in
   `script/parse-examples`. After a grammar change or a moved pin alters that list, `script/parse-examples` rewrites it;
   review its diff before committing;
-- a performance check (`test/unit/performance.test.ts`) that parsing templates ending in an unclosed directive or
-  containing long runs of delimiter prefix characters takes linear time. It loads the Wasm build through
+- performance checks (`test/unit/performance.test.ts`) that templates ending in an unclosed directive or containing
+  long runs of delimiter prefix characters parse in linear time and that generated character-scanning lexer loops hoist
+  token marking outside the per-byte loop. It loads the Wasm build through
   @willbooster/web-tree-sitter, which `bun run build/ci` rebuilds after regenerating the parser;
 - a check (`test/unit/runtimeVersion.test.ts`) that `@willbooster/web-tree-sitter` in `package.json` and
   `willbooster-tree-sitter` in `Cargo.lock` are the same version, since the Wasm tests run on the former and the Rust
