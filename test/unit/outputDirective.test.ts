@@ -51,3 +51,29 @@ test('keeps trimming markers outside comment and statement bodies', async () => 
     parser.delete();
   }
 });
+
+test('preserves delimiters and escapes across coalesced content and code runs', async () => {
+  await Parser.init();
+  const parser = new Parser();
+  parser.setLanguage(
+    await Language.load(path.resolve(import.meta.dirname, '../../tree-sitter-embedded_template.wasm'))
+  );
+  const tree = parser.parse(
+    '<script>if (a < b && c < d) {}</script><<%= x === 0 ? a % 2 : b - 1 %> <%% <% y ====%><% z %%> w %>'
+  );
+  try {
+    expect(tree?.rootNode.hasError).toBe(false);
+    expect(
+      tree?.rootNode.namedChildren.map((node) => [node.type, node.text, node.namedChildren.map((child) => child.text)])
+    ).toEqual([
+      ['content', '<script>if (a < b && c < d) {}</script><', []],
+      ['output_directive', '<%= x === 0 ? a % 2 : b - 1 %>', [' x === 0 ? a % 2 : b - 1 ']],
+      ['content', ' <%% ', []],
+      ['directive', '<% y ====%>', [' y ===']],
+      ['directive', '<% z %%> w %>', [' z %%> w ']],
+    ]);
+  } finally {
+    tree?.delete();
+    parser.delete();
+  }
+});

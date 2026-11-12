@@ -10,7 +10,7 @@
 #define LANGUAGE_VERSION 0x5742000c
 #define STATE_COUNT 27
 #define LARGE_STATE_COUNT 13
-#define LEX_STATE_COUNT 39
+#define LEX_STATE_COUNT 43
 #define SYMBOL_COUNT 30
 #define ALIAS_COUNT 1
 #define TOKEN_COUNT 20
@@ -259,26 +259,15 @@ static const TSSymbol ts_alias_sequences[4] = {
   [2] = alias_sym_comment,
 };
 
-static const uint16_t ts_non_terminal_alias_map[] = {
-  sym_code, 2,
-    sym_code,
-    alias_sym_comment,
-  0,
-};
-
-static const uint8_t ts_primary_state_bitmap[] = {
-  255, 255, 255, 4, 
-};
-
 static const uint16_t ts_lex_advance_map_0[] = {
-  '#', 37,
-  '%', 23,
-  '-', 36,
-  '=', 32,
-  '_', 25,
-  'g', 12,
-  '|', 26,
-  '~', 27,
+  '#', 41,
+  '%', 27,
+  '-', 40,
+  '=', 36,
+  '_', 29,
+  'g', 13,
+  '|', 30,
+  '~', 31,
 };
 
 #define TS_LEX_ADVANCE_MAP_SORTED(map)                                      \
@@ -321,174 +310,229 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
   eof = lookahead == 0 && lexer->eof(lexer);
   switch (state) {
     case 0:
-      if (eof) ADVANCE(13);
-      if (lookahead == '%') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(15); }
-      if (lookahead == '-') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(16); }
-      if (lookahead == '=') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(17); }
-      if (lookahead == '_') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(18); }
-      if (!eof) { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(19); }
+      if (eof) ADVANCE(16);
+      if (lookahead == '%') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(17); }
+      if (lookahead == '-') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(19); }
+      if (lookahead == '<') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(18); }
+      if (lookahead == '=') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(20); }
+      if (lookahead == '_') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(21); }
+      if (!eof) { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(23); }
       END_STATE();
     case 1:
-      if (eof) ADVANCE(13);
-      if (lookahead == '<') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(21); }
-      if (!eof) { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(22); }
+      if (eof) ADVANCE(16);
+      if (lookahead == '<') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(25); }
+      if (!eof) { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(26); }
       END_STATE();
     case 2:
-      if (lookahead == '%') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(15); }
-      if (lookahead == '-' ||
-          lookahead == '=' ||
-          lookahead == '_') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(14); }
-      if (!eof) { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(19); }
+      if (lookahead == '%') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(17); }
+      if (lookahead == '-') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(19); }
+      if (lookahead == '=') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(20); }
+      if (lookahead == '_') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(21); }
+      if (!eof) { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(23); }
       END_STATE();
     case 3:
-      if (lookahead == '>') ADVANCE(20);
+      if (lookahead == '%') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(17); }
+      if (lookahead == '-' ||
+          lookahead == '=' ||
+          lookahead == '_') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(22); }
+      if (!eof) { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(23); }
       END_STATE();
     case 4:
-      if (lookahead == '>') ADVANCE(29);
+      if (lookahead == '>') ADVANCE(24);
       END_STATE();
     case 5:
-      if (lookahead == '>') ADVANCE(30);
+      if (lookahead == '>') ADVANCE(33);
       END_STATE();
     case 6:
-      if (lookahead == '>') ADVANCE(31);
+      if (lookahead == '>') ADVANCE(34);
       END_STATE();
     case 7:
-      if (lookahead == 'a') ADVANCE(10);
+      if (lookahead == '>') ADVANCE(35);
       END_STATE();
     case 8:
-      if (lookahead == 'h') ADVANCE(11);
+      if (lookahead == 'a') ADVANCE(11);
       END_STATE();
     case 9:
-      if (lookahead == 'l') ADVANCE(38);
+      if (lookahead == 'h') ADVANCE(12);
       END_STATE();
     case 10:
-      if (lookahead == 'p') ADVANCE(8);
+      if (lookahead == 'l') ADVANCE(42);
       END_STATE();
     case 11:
-      if (lookahead == 'q') ADVANCE(9);
+      if (lookahead == 'p') ADVANCE(9);
       END_STATE();
     case 12:
-      if (lookahead == 'r') ADVANCE(7);
+      if (lookahead == 'q') ADVANCE(10);
       END_STATE();
     case 13:
-      ACCEPT_TOKEN(ts_builtin_sym_end);
+      if (lookahead == 'r') ADVANCE(8);
       END_STATE();
     case 14:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(aux_sym_code_token1);
+      if (lookahead == '-' ||
+          lookahead == '=' ||
+          lookahead == '_') ADVANCE(15);
+      if (!eof &&
+          lookahead != '%') ADVANCE(23);
       END_STATE();
     case 15:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(aux_sym_code_token1);
-      if (lookahead == '%') ADVANCE(3);
-      if (lookahead == '>') ADVANCE(28);
-      END_STATE();
-    case 16:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(aux_sym_code_token1);
-      if (lookahead == '%') ADVANCE(4);
-      END_STATE();
-    case 17:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(aux_sym_code_token1);
-      if (lookahead == '%') ADVANCE(5);
-      END_STATE();
-    case 18:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(aux_sym_code_token1);
-      if (lookahead == '%') ADVANCE(6);
-      END_STATE();
-    case 19:
-      ts_lex_state_19:
       if (!eof &&
           lookahead != '%' &&
           lookahead != '-' &&
           lookahead != '=' &&
-          lookahead != '_') TS_LEX_REPEAT(false, ts_lex_state_19);
+          lookahead != '_') ADVANCE(23);
+      END_STATE();
+    case 16:
+      ACCEPT_TOKEN(ts_builtin_sym_end);
+      END_STATE();
+    case 17:
       lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(aux_sym_code_token1);
+      if (lookahead == '%') ADVANCE(4);
+      if (lookahead == '>') ADVANCE(32);
+      if (!eof &&
+          lookahead != '-' &&
+          lookahead != '=' &&
+          lookahead != '>' &&
+          lookahead != '_') ADVANCE(23);
+      END_STATE();
+    case 18:
+      lexer->mark_start(lexer, &start_tags[0]);
+      ACCEPT_TOKEN(aux_sym_code_token1);
+      if (lookahead == '%') ADVANCE(28);
+      if (!eof &&
+          lookahead != '-' &&
+          lookahead != '=' &&
+          lookahead != '_') ADVANCE(23);
+      END_STATE();
+    case 19:
+      lexer->mark_start(lexer, &start_tags[0]);
+      ACCEPT_TOKEN(aux_sym_code_token1);
+      if (lookahead == '%') ADVANCE(5);
+      if (lookahead == '-' ||
+          lookahead == '=' ||
+          lookahead == '_') ADVANCE(14);
+      if (!eof) ADVANCE(23);
       END_STATE();
     case 20:
       lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_PERCENT_PERCENT_GT);
+      ACCEPT_TOKEN(aux_sym_code_token1);
+      if (lookahead == '%') ADVANCE(6);
+      if (lookahead == '-' ||
+          lookahead == '=' ||
+          lookahead == '_') ADVANCE(14);
+      if (!eof) ADVANCE(23);
       END_STATE();
     case 21:
       lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(aux_sym_content_token1);
-      if (lookahead == '%') ADVANCE(24);
+      ACCEPT_TOKEN(aux_sym_code_token1);
+      if (lookahead == '%') ADVANCE(7);
+      if (lookahead == '-' ||
+          lookahead == '=' ||
+          lookahead == '_') ADVANCE(14);
+      if (!eof) ADVANCE(23);
       END_STATE();
     case 22:
-      ts_lex_state_22:
+      lexer->mark_start(lexer, &start_tags[0]);
+      ACCEPT_TOKEN(aux_sym_code_token1);
+      if (lookahead == '-' ||
+          lookahead == '=' ||
+          lookahead == '_') ADVANCE(14);
       if (!eof &&
-          lookahead != '<') TS_LEX_REPEAT(false, ts_lex_state_22);
+          lookahead != '%') ADVANCE(23);
+      END_STATE();
+    case 23:
+      ts_lex_state_23:
+      if (!eof &&
+          lookahead != '%' &&
+          lookahead != '-' &&
+          lookahead != '=' &&
+          lookahead != '_') TS_LEX_REPEAT(false, ts_lex_state_23);
+      lexer->mark_start(lexer, &start_tags[0]);
+      ACCEPT_TOKEN(aux_sym_code_token1);
+      END_STATE();
+    case 24:
+      lexer->mark_start(lexer, &start_tags[0]);
+      ACCEPT_TOKEN(anon_sym_PERCENT_PERCENT_GT);
+      END_STATE();
+    case 25:
+      lexer->mark_start(lexer, &start_tags[0]);
+      ACCEPT_TOKEN(aux_sym_content_token1);
+      if (lookahead == '%') ADVANCE(28);
+      if (!eof &&
+          lookahead != '<') ADVANCE(26);
+      END_STATE();
+    case 26:
+      ts_lex_state_26:
+      if (!eof &&
+          lookahead != '<') TS_LEX_REPEAT(false, ts_lex_state_26);
       lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(aux_sym_content_token1);
       END_STATE();
-    case 23:
+    case 27:
       lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(anon_sym_LT_PERCENT_PERCENT);
       END_STATE();
-    case 24:
+    case 28:
       lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(anon_sym_LT_PERCENT);
       TS_LEX_ADVANCE_MAP_SORTED(ts_lex_advance_map_0);
       END_STATE();
-    case 25:
+    case 29:
       lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(anon_sym_LT_PERCENT_);
       END_STATE();
-    case 26:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_LT_PERCENT_PIPE);
-      if (lookahead == '=') ADVANCE(34);
-      END_STATE();
-    case 27:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_LT_PERCENT_TILDE);
-      END_STATE();
-    case 28:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_PERCENT_GT);
-      END_STATE();
-    case 29:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_DASH_PERCENT_GT);
-      END_STATE();
     case 30:
       lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_EQ_PERCENT_GT);
+      ACCEPT_TOKEN(anon_sym_LT_PERCENT_PIPE);
+      if (lookahead == '=') ADVANCE(38);
       END_STATE();
     case 31:
       lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym__PERCENT_GT);
+      ACCEPT_TOKEN(anon_sym_LT_PERCENT_TILDE);
       END_STATE();
     case 32:
       lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_LT_PERCENT_EQ);
-      if (lookahead == '=') ADVANCE(33);
+      ACCEPT_TOKEN(anon_sym_PERCENT_GT);
       END_STATE();
     case 33:
       lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_LT_PERCENT_EQ_EQ);
+      ACCEPT_TOKEN(anon_sym_DASH_PERCENT_GT);
       END_STATE();
     case 34:
       lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_LT_PERCENT_PIPE_EQ);
-      if (lookahead == '=') ADVANCE(35);
+      ACCEPT_TOKEN(anon_sym_EQ_PERCENT_GT);
       END_STATE();
     case 35:
       lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_LT_PERCENT_PIPE_EQ_EQ);
+      ACCEPT_TOKEN(anon_sym__PERCENT_GT);
       END_STATE();
     case 36:
       lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_LT_PERCENT_DASH);
+      ACCEPT_TOKEN(anon_sym_LT_PERCENT_EQ);
+      if (lookahead == '=') ADVANCE(37);
       END_STATE();
     case 37:
       lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_LT_PERCENT_POUND);
+      ACCEPT_TOKEN(anon_sym_LT_PERCENT_EQ_EQ);
       END_STATE();
     case 38:
+      lexer->mark_start(lexer, &start_tags[0]);
+      ACCEPT_TOKEN(anon_sym_LT_PERCENT_PIPE_EQ);
+      if (lookahead == '=') ADVANCE(39);
+      END_STATE();
+    case 39:
+      lexer->mark_start(lexer, &start_tags[0]);
+      ACCEPT_TOKEN(anon_sym_LT_PERCENT_PIPE_EQ_EQ);
+      END_STATE();
+    case 40:
+      lexer->mark_start(lexer, &start_tags[0]);
+      ACCEPT_TOKEN(anon_sym_LT_PERCENT_DASH);
+      END_STATE();
+    case 41:
+      lexer->mark_start(lexer, &start_tags[0]);
+      ACCEPT_TOKEN(anon_sym_LT_PERCENT_POUND);
+      END_STATE();
+    case 42:
       lexer->mark_start(lexer, &start_tags[0]);
       ACCEPT_TOKEN(anon_sym_LT_PERCENTgraphql);
       END_STATE();
@@ -501,11 +545,12 @@ static const TSLexerMode ts_lex_modes[] = {
   [0] = {.lex_state = 0, .lex_state_after_extra = 0, .external_lex_state = 0, .external_lex_state_after_extra = 0, .reserved_word_set_id = 0},
   [1] = {.lex_state = 1, .lex_state_after_extra = 1, .external_lex_state = 0, .external_lex_state_after_extra = 0, .reserved_word_set_id = 0},
   [2] = {.lex_state = 2, .lex_state_after_extra = 2, .external_lex_state = 0, .external_lex_state_after_extra = 0, .reserved_word_set_id = 0},
+  [3] = {.lex_state = 3, .lex_state_after_extra = 3, .external_lex_state = 0, .external_lex_state_after_extra = 0, .reserved_word_set_id = 0},
 };
 
 static const uint8_t ts_lex_mode_ids[STATE_COUNT] = {
-  0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 
-  0, 1, 0, 1, 0, 1, 2, 1, 2, 2, 0, 
+  0, 1, 1, 1, 1, 1, 2, 0, 1, 2, 1, 2, 1, 0, 1, 0, 
+  2, 1, 1, 2, 0, 1, 3, 1, 3, 3, 0, 
 };
 
 static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
@@ -513,10 +558,22 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [ts_builtin_sym_end] = ACTIONS(1),
     [aux_sym_code_token1] = ACTIONS(1),
     [anon_sym_PERCENT_PERCENT_GT] = ACTIONS(1),
+    [anon_sym_LT_PERCENT_PERCENT] = ACTIONS(1),
+    [anon_sym_LT_PERCENT] = ACTIONS(1),
+    [anon_sym_LT_PERCENT_] = ACTIONS(1),
+    [anon_sym_LT_PERCENT_PIPE] = ACTIONS(1),
+    [anon_sym_LT_PERCENT_TILDE] = ACTIONS(1),
     [anon_sym_PERCENT_GT] = ACTIONS(1),
     [anon_sym_DASH_PERCENT_GT] = ACTIONS(1),
     [anon_sym_EQ_PERCENT_GT] = ACTIONS(1),
     [anon_sym__PERCENT_GT] = ACTIONS(1),
+    [anon_sym_LT_PERCENT_EQ] = ACTIONS(1),
+    [anon_sym_LT_PERCENT_EQ_EQ] = ACTIONS(1),
+    [anon_sym_LT_PERCENT_PIPE_EQ] = ACTIONS(1),
+    [anon_sym_LT_PERCENT_PIPE_EQ_EQ] = ACTIONS(1),
+    [anon_sym_LT_PERCENT_DASH] = ACTIONS(1),
+    [anon_sym_LT_PERCENT_POUND] = ACTIONS(1),
+    [anon_sym_LT_PERCENTgraphql] = ACTIONS(1),
   },
   [STATE(1)] = {
     [sym_template] = STATE(13),
@@ -623,7 +680,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_LT_PERCENTgraphql] = ACTIONS(33),
   },
   [STATE(6)] = {
-    [aux_sym_code_repeat1] = STATE(18),
+    [aux_sym_code_repeat1] = STATE(19),
     [aux_sym_code_token1] = ACTIONS(39),
     [anon_sym_PERCENT_PERCENT_GT] = ACTIONS(40),
     [anon_sym_PERCENT_GT] = ACTIONS(41),
@@ -729,11 +786,11 @@ static const uint16_t ts_small_parse_table[] = {
   [53] =
     2, 59, 14, 0, 58, 17, 0, 
   [60] =
-    6, 1, 60, 2, 62, 9, 64, 10, 64, 11, 64, 12, 64, 
-  [73] =
+    2, 61, 14, 0, 60, 17, 0, 
+  [67] =
+    6, 1, 62, 2, 64, 9, 66, 10, 66, 11, 66, 12, 66, 
+  [80] =
     1, 28, 65535, 
-  [76] =
-    2, 66, 14, 0, 65, 17, 0, 
   [83] =
     1, 67, 4, 9, 10, 11, 12, 
   [90] =
@@ -757,9 +814,9 @@ static const uint16_t ts_small_parse_table[] = {
   [135] =
     132, 0, 129, 16384, 
   [139] =
-    518, 0, 0, 3, 77, 79, 64, 
+    518, 0, 0, 3, 77, 79, 66, 
   [146] =
-    132, 0, 73, 32768, 
+    132, 0, 80, 32768, 
   [150] =
     1, 9, 81, 
 };
@@ -770,8 +827,8 @@ static const uint32_t ts_small_parse_table_map[] = {
   [SMALL_STATE(15) * 2] = 28, 2147483661,
   [SMALL_STATE(16) * 2] = 2147483683, 2147483696,
   [SMALL_STATE(17) * 2] = 3221225525, 2147483661,
-  [SMALL_STATE(18) * 2] = 2147483708, 2147483721,
-  [SMALL_STATE(19) * 2] = 3221225548, 2147483661,
+  [SMALL_STATE(18) * 2] = 3221225532, 2147483661,
+  [SMALL_STATE(19) * 2] = 2147483715, 2147483728,
   [SMALL_STATE(20) * 2] = 83, 2147483661,
   [SMALL_STATE(21) * 2] = 3221225562, 2147483661,
   [SMALL_STATE(22) * 2] = 2147483745, 2147483752,
@@ -811,8 +868,8 @@ static const uint32_t ts_parse_actions[] = {
   [34] = ACTION_LIST(2, false) | REDUCE(90), SHIFT_REPEAT(5),
   [36] = ACTION_LIST(2, true) | REDUCE(90), SHIFT_REPEAT(5),
   [38] = ACTION_LIST(1, false) | REDUCE(90),
-  [39] = ACTION_LIST(1, false) | SHIFT(18),
-  [40] = ACTION_LIST(1, true) | SHIFT(18),
+  [39] = ACTION_LIST(1, false) | SHIFT(19),
+  [40] = ACTION_LIST(1, true) | SHIFT(19),
   [41] = ACTION_LIST(1, true) | REDUCE(92),
   [42] = ACTION_LIST(1, true) | SHIFT(8),
   [43] = ACTION_LIST(1, true) | REDUCE(94),
@@ -832,12 +889,12 @@ static const uint32_t ts_parse_actions[] = {
   [57] = ACTION_LIST(1, true) | SHIFT(17),
   [58] = ACTION_LIST(1, true) | REDUCE(102),
   [59] = ACTION_LIST(1, false) | REDUCE(102),
-  [60] = ACTION_LIST(2, false) | REDUCE(104), SHIFT_REPEAT(18),
-  [62] = ACTION_LIST(2, true) | REDUCE(104), SHIFT_REPEAT(18),
-  [64] = ACTION_LIST(1, true) | REDUCE(104),
-  [65] = ACTION_LIST(1, true) | REDUCE(106),
-  [66] = ACTION_LIST(1, false) | REDUCE(106),
-  [67] = ACTION_LIST(1, true) | SHIFT(19),
+  [60] = ACTION_LIST(1, true) | REDUCE(104),
+  [61] = ACTION_LIST(1, false) | REDUCE(104),
+  [62] = ACTION_LIST(2, false) | REDUCE(106), SHIFT_REPEAT(19),
+  [64] = ACTION_LIST(2, true) | REDUCE(106), SHIFT_REPEAT(19),
+  [66] = ACTION_LIST(1, true) | REDUCE(106),
+  [67] = ACTION_LIST(1, true) | SHIFT(18),
   [68] = ACTION_LIST(1, true) | REDUCE(108),
   [69] = ACTION_LIST(1, false) | REDUCE(108),
   [70] = ACTION_LIST(1, false) | SHIFT(24),
@@ -847,8 +904,8 @@ static const uint32_t ts_parse_actions[] = {
   [74] = ACTION_LIST(1, false) | REDUCE(110),
   [75] = ACTION_LIST(1, false) | SHIFT(25),
   [76] = ACTION_LIST(1, true) | SHIFT(25),
-  [77] = ACTION_LIST(2, false) | REDUCE(104), SHIFT_REPEAT(25),
-  [79] = ACTION_LIST(2, true) | REDUCE(104), SHIFT_REPEAT(25),
+  [77] = ACTION_LIST(2, false) | REDUCE(106), SHIFT_REPEAT(25),
+  [79] = ACTION_LIST(2, true) | REDUCE(106), SHIFT_REPEAT(25),
   [81] = ACTION_LIST(1, true) | SHIFT(23),
   [82] = REDUCE_RECORD(sym_template, 0, 0, 0),
   [84] = REDUCE_RECORD(sym_template, 1, 0, 0),
@@ -861,8 +918,8 @@ static const uint32_t ts_parse_actions[] = {
   [98] = REDUCE_RECORD(sym_directive, 2, 0, 0),
   [100] = REDUCE_RECORD(sym_output_directive, 3, 0, 0),
   [102] = REDUCE_RECORD(sym_comment_directive, 2, 0, 0),
-  [104] = REDUCE_RECORD(aux_sym_code_repeat1, 2, 0, 0),
-  [106] = REDUCE_RECORD(sym_comment_directive, 3, 0, 1),
+  [104] = REDUCE_RECORD(sym_comment_directive, 3, 0, 1),
+  [106] = REDUCE_RECORD(aux_sym_code_repeat1, 2, 0, 0),
   [108] = REDUCE_RECORD(sym_graphql_directive, 2, 0, 0),
   [110] = REDUCE_RECORD(sym_graphql_directive, 3, 0, 0),
 };
@@ -898,15 +955,13 @@ TS_PUBLIC const TSLanguage *tree_sitter_embedded_template(void) {
     .symbol_names = ts_symbol_names,
     .symbol_metadata = ts_symbol_metadata,
     .public_symbol_map = ts_symbol_map,
-    .alias_map = ts_non_terminal_alias_map,
     .alias_sequences = ts_alias_sequences,
     .alias_sequence_offsets = ts_alias_sequence_offsets,
     .alias_sequence_count = 4,
     .lex_modes = (const void*)ts_lex_modes,
     .lex_mode_ids = ts_lex_mode_ids,
-    .lex_mode_count = 3,
+    .lex_mode_count = 4,
     .lex_fn = ts_lex,
-    .primary_state_bitmap = ts_primary_state_bitmap,
     .name = "embedded_template",
     .max_reserved_word_set_size = 0,
     .metadata = {
