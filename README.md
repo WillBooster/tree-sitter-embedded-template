@@ -19,19 +19,19 @@ It generates the parser with the
 [WillBooster/tree-sitter](https://github.com/WillBooster/tree-sitter) generator (ABI `0x5742000c`). The parser loads only
 with that fork's runtime ([willbooster-tree-sitter](https://crates.io/crates/willbooster-tree-sitter),
 [@willbooster/web-tree-sitter](https://www.npmjs.com/package/@willbooster/web-tree-sitter)); upstream's runtime rejects it.
-This package targets and is tested with version 19.1.1 or later in the 19.x series.
+This package targets and is tested with version 20.0.0 or later in the 20.x series.
 
 ## Support Scope
 
 This fork maintains only full parsing: valid input yields a correct tree, and invalid input yields `ERROR` or `MISSING`
-nodes without crashing, hanging, or taking more than linear time. Incremental parsing works as in upstream tree-sitter
-but is not tested here, and no queries (highlights, locals, injections, tags) are shipped. Node types, field names, and
-the trees that error recovery produces may change; such changes are released as new major versions.
+nodes without crashing, hanging, or taking more than linear time. Incremental parsing is not supported, and no queries
+(highlights, locals, injections, tags) are shipped. Node types, field names, and the trees that error recovery produces
+may change; such changes are released as new major versions.
 
 ## Usage
 
 The npm package ships `tree-sitter-embedded_template.wasm` for
-[@willbooster/web-tree-sitter](https://www.npmjs.com/package/@willbooster/web-tree-sitter) version 19.1.1 or later in the 19.x series, which runs in Node.js, Bun, browsers, and Cloudflare Workers.
+[@willbooster/web-tree-sitter](https://www.npmjs.com/package/@willbooster/web-tree-sitter) version 20.0.0 or later in the 20.x series, which runs in Node.js, Bun, browsers, and Cloudflare Workers.
 In Node.js and Bun, load the grammar from its path:
 
 ```js
@@ -80,7 +80,7 @@ In Rust, depend on the [crate](https://crates.io/crates/willbooster-tree-sitter-
 fuzzed with:
 
 ```sh
-cargo add willbooster-tree-sitter@19.1.1 --rename tree-sitter
+cargo add willbooster-tree-sitter@20.0.0 --rename tree-sitter
 cargo add willbooster-tree-sitter-embedded-template --rename tree-sitter-embedded-template
 ```
 
