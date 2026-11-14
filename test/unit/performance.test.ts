@@ -52,19 +52,24 @@ function expectLinearTime(buildSource: (count: number) => string, expectedError:
   let smallFastest = Infinity;
   let largeFastest = Infinity;
   for (let run = 0; run < 5; run++) {
-    smallFastest = Math.min(smallFastest, parseCpuTime(small, expectedError));
+    smallFastest = Math.min(smallFastest, parseCpuTime(small, expectedError, 10) / 10);
     largeFastest = Math.min(largeFastest, parseCpuTime(large, expectedError));
   }
   expect(largeFastest / smallFastest).toBeLessThan(18);
 }
 
-function parseCpuTime(source: string, expectedError: boolean): number {
+function parseCpuTime(source: string, expectedError: boolean, repetitions = 1): number {
+  const trees = [];
   const start = process.threadCpuUsage();
-  const tree = parser.parse(source);
+  for (let i = 0; i < repetitions; i++) {
+    trees.push(parser.parse(source));
+  }
   const { system, user } = process.threadCpuUsage(start);
-  if (!tree) throw new Error('The parser returned no tree');
-  const { hasError } = tree.rootNode;
-  tree.delete();
-  expect(hasError).toBe(expectedError);
+  for (const tree of trees) {
+    if (!tree) throw new Error('The parser returned no tree');
+    const { hasError } = tree.rootNode;
+    tree.delete();
+    expect(hasError).toBe(expectedError);
+  }
   return system + user;
 }
