@@ -7,7 +7,7 @@
 #endif
 
 #define TS_GENERATION_PROFILED 1
-#define LANGUAGE_VERSION 0x5742000c
+#define LANGUAGE_VERSION 0x5742000d
 #define STATE_COUNT 27
 #define LARGE_STATE_COUNT 13
 #define LEX_STATE_COUNT 43
@@ -54,38 +54,57 @@ enum ts_symbol_identifiers {
   alias_sym_comment = 30,
 };
 
-static const char * const ts_symbol_names[] = {
-  [ts_builtin_sym_end] = "end",
-  [aux_sym_code_token1] = "code_token1",
-  [anon_sym_PERCENT_PERCENT_GT] = "%%>",
-  [aux_sym_content_token1] = "content_token1",
-  [anon_sym_LT_PERCENT_PERCENT] = "<%%",
-  [anon_sym_LT_PERCENT] = "<%",
-  [anon_sym_LT_PERCENT_] = "<%_",
-  [anon_sym_LT_PERCENT_PIPE] = "<%|",
-  [anon_sym_LT_PERCENT_TILDE] = "<%~",
-  [anon_sym_PERCENT_GT] = "%>",
-  [anon_sym_DASH_PERCENT_GT] = "-%>",
-  [anon_sym_EQ_PERCENT_GT] = "=%>",
-  [anon_sym__PERCENT_GT] = "_%>",
-  [anon_sym_LT_PERCENT_EQ] = "<%=",
-  [anon_sym_LT_PERCENT_EQ_EQ] = "<%==",
-  [anon_sym_LT_PERCENT_PIPE_EQ] = "<%|=",
-  [anon_sym_LT_PERCENT_PIPE_EQ_EQ] = "<%|==",
-  [anon_sym_LT_PERCENT_DASH] = "<%-",
-  [anon_sym_LT_PERCENT_POUND] = "<%#",
-  [anon_sym_LT_PERCENTgraphql] = "<%graphql",
-  [sym_template] = "template",
-  [sym_code] = "code",
-  [sym_content] = "content",
-  [sym_directive] = "directive",
-  [sym_output_directive] = "output_directive",
-  [sym_comment_directive] = "comment_directive",
-  [sym_graphql_directive] = "graphql_directive",
-  [aux_sym_template_repeat1] = "template_repeat1",
-  [aux_sym_code_repeat1] = "code_repeat1",
-  [aux_sym_content_repeat1] = "content_repeat1",
-  [alias_sym_comment] = "comment",
+static const uint8_t ts_string_data[] = {
+  101, 110, 100, 0, 99, 111, 100, 101, 95, 116, 111, 107, 101, 110, 49, 0, 
+  37, 37, 62, 0, 99, 111, 110, 116, 101, 110, 116, 95, 116, 111, 107, 101, 
+  110, 49, 0, 60, 37, 37, 0, 60, 37, 0, 60, 37, 95, 0, 60, 37, 
+  124, 0, 60, 37, 126, 0, 37, 62, 0, 45, 37, 62, 0, 61, 37, 62, 
+  0, 95, 37, 62, 0, 60, 37, 61, 0, 60, 37, 61, 61, 0, 60, 37, 
+  124, 61, 0, 60, 37, 124, 61, 61, 0, 60, 37, 45, 0, 60, 37, 35, 
+  0, 60, 37, 103, 114, 97, 112, 104, 113, 108, 0, 116, 101, 109, 112, 108, 
+  97, 116, 101, 0, 99, 111, 100, 101, 0, 99, 111, 110, 116, 101, 110, 116, 
+  0, 100, 105, 114, 101, 99, 116, 105, 118, 101, 0, 111, 117, 116, 112, 117, 
+  116, 95, 100, 105, 114, 101, 99, 116, 105, 118, 101, 0, 99, 111, 109, 109, 
+  101, 110, 116, 95, 100, 105, 114, 101, 99, 116, 105, 118, 101, 0, 103, 114, 
+  97, 112, 104, 113, 108, 95, 100, 105, 114, 101, 99, 116, 105, 118, 101, 0, 
+  116, 101, 109, 112, 108, 97, 116, 101, 95, 114, 101, 112, 101, 97, 116, 49, 
+  0, 99, 111, 100, 101, 95, 114, 101, 112, 101, 97, 116, 49, 0, 99, 111, 
+  110, 116, 101, 110, 116, 95, 114, 101, 112, 101, 97, 116, 49, 0, 99, 111, 
+  109, 109, 101, 110, 116, 0, 
+};
+
+static const uint32_t ts_symbol_name_offsets[] = {
+  [ts_builtin_sym_end] = 0,
+  [aux_sym_code_token1] = 4,
+  [anon_sym_PERCENT_PERCENT_GT] = 16,
+  [aux_sym_content_token1] = 20,
+  [anon_sym_LT_PERCENT_PERCENT] = 35,
+  [anon_sym_LT_PERCENT] = 39,
+  [anon_sym_LT_PERCENT_] = 42,
+  [anon_sym_LT_PERCENT_PIPE] = 46,
+  [anon_sym_LT_PERCENT_TILDE] = 50,
+  [anon_sym_PERCENT_GT] = 54,
+  [anon_sym_DASH_PERCENT_GT] = 57,
+  [anon_sym_EQ_PERCENT_GT] = 61,
+  [anon_sym__PERCENT_GT] = 65,
+  [anon_sym_LT_PERCENT_EQ] = 69,
+  [anon_sym_LT_PERCENT_EQ_EQ] = 73,
+  [anon_sym_LT_PERCENT_PIPE_EQ] = 78,
+  [anon_sym_LT_PERCENT_PIPE_EQ_EQ] = 83,
+  [anon_sym_LT_PERCENT_DASH] = 89,
+  [anon_sym_LT_PERCENT_POUND] = 93,
+  [anon_sym_LT_PERCENTgraphql] = 97,
+  [sym_template] = 107,
+  [sym_code] = 116,
+  [sym_content] = 121,
+  [sym_directive] = 129,
+  [sym_output_directive] = 139,
+  [sym_comment_directive] = 156,
+  [sym_graphql_directive] = 174,
+  [aux_sym_template_repeat1] = 192,
+  [aux_sym_code_repeat1] = 209,
+  [aux_sym_content_repeat1] = 222,
+  [alias_sym_comment] = 238,
 };
 
 static const TSSymbol ts_symbol_map[] = {
@@ -122,131 +141,38 @@ static const TSSymbol ts_symbol_map[] = {
   [alias_sym_comment] = alias_sym_comment,
 };
 
-static const TSSymbolMetadata ts_symbol_metadata[] = {
-  [ts_builtin_sym_end] = {
-    .visible = false,
-    .named = true,
-  },
-  [aux_sym_code_token1] = {
-    .visible = false,
-    .named = false,
-  },
-  [anon_sym_PERCENT_PERCENT_GT] = {
-    .visible = true,
-    .named = false,
-  },
-  [aux_sym_content_token1] = {
-    .visible = false,
-    .named = false,
-  },
-  [anon_sym_LT_PERCENT_PERCENT] = {
-    .visible = true,
-    .named = false,
-  },
-  [anon_sym_LT_PERCENT] = {
-    .visible = true,
-    .named = false,
-  },
-  [anon_sym_LT_PERCENT_] = {
-    .visible = true,
-    .named = false,
-  },
-  [anon_sym_LT_PERCENT_PIPE] = {
-    .visible = true,
-    .named = false,
-  },
-  [anon_sym_LT_PERCENT_TILDE] = {
-    .visible = true,
-    .named = false,
-  },
-  [anon_sym_PERCENT_GT] = {
-    .visible = true,
-    .named = false,
-  },
-  [anon_sym_DASH_PERCENT_GT] = {
-    .visible = true,
-    .named = false,
-  },
-  [anon_sym_EQ_PERCENT_GT] = {
-    .visible = true,
-    .named = false,
-  },
-  [anon_sym__PERCENT_GT] = {
-    .visible = true,
-    .named = false,
-  },
-  [anon_sym_LT_PERCENT_EQ] = {
-    .visible = true,
-    .named = false,
-  },
-  [anon_sym_LT_PERCENT_EQ_EQ] = {
-    .visible = true,
-    .named = false,
-  },
-  [anon_sym_LT_PERCENT_PIPE_EQ] = {
-    .visible = true,
-    .named = false,
-  },
-  [anon_sym_LT_PERCENT_PIPE_EQ_EQ] = {
-    .visible = true,
-    .named = false,
-  },
-  [anon_sym_LT_PERCENT_DASH] = {
-    .visible = true,
-    .named = false,
-  },
-  [anon_sym_LT_PERCENT_POUND] = {
-    .visible = true,
-    .named = false,
-  },
-  [anon_sym_LT_PERCENTgraphql] = {
-    .visible = true,
-    .named = false,
-  },
-  [sym_template] = {
-    .visible = true,
-    .named = true,
-  },
-  [sym_code] = {
-    .visible = true,
-    .named = true,
-  },
-  [sym_content] = {
-    .visible = true,
-    .named = true,
-  },
-  [sym_directive] = {
-    .visible = true,
-    .named = true,
-  },
-  [sym_output_directive] = {
-    .visible = true,
-    .named = true,
-  },
-  [sym_comment_directive] = {
-    .visible = true,
-    .named = true,
-  },
-  [sym_graphql_directive] = {
-    .visible = true,
-    .named = true,
-  },
-  [aux_sym_template_repeat1] = {
-    .visible = false,
-    .named = false,
-  },
-  [aux_sym_code_repeat1] = {
-    .visible = false,
-    .named = false,
-  },
-  [aux_sym_content_repeat1] = {
-    .visible = false,
-    .named = false,
-  },
-  [alias_sym_comment] = {
-    .visible = true,
-    .named = true,
-  },
+static const uint8_t ts_symbol_metadata[] = {
+  [ts_builtin_sym_end] = 2,
+  [aux_sym_code_token1] = 0,
+  [anon_sym_PERCENT_PERCENT_GT] = 1,
+  [aux_sym_content_token1] = 0,
+  [anon_sym_LT_PERCENT_PERCENT] = 1,
+  [anon_sym_LT_PERCENT] = 1,
+  [anon_sym_LT_PERCENT_] = 1,
+  [anon_sym_LT_PERCENT_PIPE] = 1,
+  [anon_sym_LT_PERCENT_TILDE] = 1,
+  [anon_sym_PERCENT_GT] = 1,
+  [anon_sym_DASH_PERCENT_GT] = 1,
+  [anon_sym_EQ_PERCENT_GT] = 1,
+  [anon_sym__PERCENT_GT] = 1,
+  [anon_sym_LT_PERCENT_EQ] = 1,
+  [anon_sym_LT_PERCENT_EQ_EQ] = 1,
+  [anon_sym_LT_PERCENT_PIPE_EQ] = 1,
+  [anon_sym_LT_PERCENT_PIPE_EQ_EQ] = 1,
+  [anon_sym_LT_PERCENT_DASH] = 1,
+  [anon_sym_LT_PERCENT_POUND] = 1,
+  [anon_sym_LT_PERCENTgraphql] = 1,
+  [sym_template] = 3,
+  [sym_code] = 3,
+  [sym_content] = 3,
+  [sym_directive] = 3,
+  [sym_output_directive] = 3,
+  [sym_comment_directive] = 3,
+  [sym_graphql_directive] = 3,
+  [aux_sym_template_repeat1] = 0,
+  [aux_sym_code_repeat1] = 0,
+  [aux_sym_content_repeat1] = 0,
+  [alias_sym_comment] = 3,
 };
 
 static const uint32_t ts_alias_sequence_offsets[PRODUCTION_ID_COUNT] = {
@@ -259,287 +185,41 @@ static const TSSymbol ts_alias_sequences[4] = {
   [2] = alias_sym_comment,
 };
 
-static const uint16_t ts_lex_advance_map_0[] = {
-  '#', 41,
-  '%', 27,
-  '-', 40,
-  '=', 36,
-  '_', 29,
-  'g', 13,
-  '|', 30,
-  '~', 31,
+static const uint16_t ts_lex_table[] = {
+  526, 0, 43, 29, 18, 1, 1, 105, 0, 0, 0, 0, 0, 1, 1, 1, 
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+  2, 1, 3, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 6, 7, 1, 1, 1, 1, 
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 8, 1, 9, 1, 
+  1, 1, 1, 1, 10, 11, 1, 1, 1, 12, 1, 1, 1, 13, 14, 15, 
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 16, 1, 17, 1, 65535, 16, 1, 
+  15, 1, 8216, 0, 0, 2, 8219, 0, 31, 3, 8216, 0, 38, 4, 8216, 0, 
+  0, 5, 0, 0, 4, 6, 0, 0, 6, 7, 0, 0, 17, 8, 0, 0, 
+  24, 9, 0, 0, 25, 10, 0, 0, 28, 11, 0, 0, 30, 12, 0, 0, 
+  33, 13, 0, 0, 35, 14, 0, 0, 45, 15, 24, 0, 52, 16, 24, 0, 
+  0, 0, 0, 1, 22, 17, 24, 16386, 59, 18, 24, 16386, 66, 19, 24, 16386, 
+  73, 20, 24, 16386, 80, 21, 24, 16386, 87, 22, 24, 16386, 52, 16, 24, 16386, 
+  0, 0, 0, 16387, 9, 23, 27, 16388, 27, 24, 27, 16388, 0, 0, 0, 16389, 
+  0, 25, 0, 16390, 0, 0, 0, 16391, 48, 26, 0, 16392, 0, 0, 0, 16393, 
+  0, 0, 0, 16394, 0, 0, 0, 16395, 0, 0, 0, 16396, 0, 0, 0, 16397, 
+  51, 27, 0, 16398, 0, 0, 0, 16399, 55, 28, 0, 16400, 0, 0, 0, 16401, 
+  0, 0, 0, 16402, 0, 0, 0, 16403, 0, 0, 0, 16404, 2, 17, 65535, 0, 
+  25, 42, 25, 28, 25, 41, 2, 8218, 25, 37, 5, 25, 25, 30, 23, 0, 
+  25, 14, 6, 34, 23, 29, 7, 35, 23, 0, 1, 17, 25, 31, 25, 32, 
+  1, 8210, 1, 8212, 1, 8211, 1, 8213, 17, 0, 1, 8214, 8, 36, 17, 5, 
+  17, 0, 24, 0, 17, 0, 17, 33, 17, 0, 3, 0, 24, 0, 9, 12, 
+  3, 8210, 3, 8212, 10, 13, 3, 8213, 4, 0, 3, 8214, 11, 43, 4, 8210, 
+  4, 8215, 12, 10, 4, 8215, 15, 0, 4, 8215, 13, 11, 15, 0, 15, 16, 
+  14, 9, 15, 16, 16, 0, 15, 16, 26, 39, 16, 0, 16, 0, 27, 38, 
+  16, 0, 18, 0, 16, 0, 28, 40, 18, 29, 18, 0, 65535, 0, 18, 0, 
+  19, 0, 18, 0, 65535, 0, 19, 6, 19, 15, 65535, 0, 19, 15, 20, 0, 
+  19, 15, 65535, 0, 20, 7, 20, 15, 65535, 0, 20, 15, 21, 0, 20, 15, 
+  65535, 0, 21, 8, 21, 15, 65535, 0, 21, 15, 22, 0, 21, 15, 65535, 0, 
+  22, 0, 22, 15, 65535, 0, 22, 15, 65535, 0, 22, 15, 65535, 0, 65535, 0, 
+  65535, 0, 65535, 0, 65535, 0, 65535, 0, 65535, 0, 65535, 0, 65535, 0, 
 };
-
-#define TS_LEX_ADVANCE_MAP_SORTED(map)                                      \
-  {                                                                 \
-    uint32_t low = 0;                                                \
-    uint32_t high = sizeof(map) / sizeof(map[0]) / 2;                 \
-    while (low < high) {                                             \
-      uint32_t mid = low + (high - low) / 2;                          \
-      if (map[mid * 2] < lookahead) {                                \
-        low = mid + 1;                                              \
-      } else if (map[mid * 2] > lookahead) {                          \
-        high = mid;                                                 \
-      } else {                                                      \
-        state = map[mid * 2 + 1];                                    \
-        goto next_state;                                            \
-      }                                                             \
-    }                                                               \
-  }
-
-#define TS_LEX_ADVANCE_MAP_DENSE(first, map)                                \
-  {                                                                 \
-    uint32_t index = (uint32_t)lookahead - (first);                   \
-    if (index < sizeof(map) / sizeof(map[0]) && map[index] != UINT16_MAX) { \
-      state = map[index];                                            \
-      goto next_state;                                              \
-    }                                                               \
-  }
-
-#define TS_LEX_REPEAT(skip_value, label)             \
-  {                                                \
-    lexer->advance(lexer, skip_value);               \
-    lookahead = lexer->lookahead;                    \
-    eof = lookahead == 0 && lexer->eof(lexer);        \
-    goto label;                                     \
-  }
-
-static bool ts_lex(TSLexer *lexer, TSStateId state) {
-  UNUSED TSLexerCheckpoint start_tags[1];
-  START_LEXER();
-  eof = lookahead == 0 && lexer->eof(lexer);
-  switch (state) {
-    case 0:
-      if (eof) ADVANCE(16);
-      if (lookahead == '%') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(17); }
-      if (lookahead == '-') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(19); }
-      if (lookahead == '<') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(18); }
-      if (lookahead == '=') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(20); }
-      if (lookahead == '_') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(21); }
-      if (!eof) { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(23); }
-      END_STATE();
-    case 1:
-      if (eof) ADVANCE(16);
-      if (lookahead == '<') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(25); }
-      if (!eof) { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(26); }
-      END_STATE();
-    case 2:
-      if (lookahead == '%') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(17); }
-      if (lookahead == '-') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(19); }
-      if (lookahead == '=') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(20); }
-      if (lookahead == '_') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(21); }
-      if (!eof) { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(23); }
-      END_STATE();
-    case 3:
-      if (lookahead == '%') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(17); }
-      if (lookahead == '-' ||
-          lookahead == '=' ||
-          lookahead == '_') { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(22); }
-      if (!eof) { lexer->get_checkpoint(lexer, &start_tags[0]); ADVANCE(23); }
-      END_STATE();
-    case 4:
-      if (lookahead == '>') ADVANCE(24);
-      END_STATE();
-    case 5:
-      if (lookahead == '>') ADVANCE(33);
-      END_STATE();
-    case 6:
-      if (lookahead == '>') ADVANCE(34);
-      END_STATE();
-    case 7:
-      if (lookahead == '>') ADVANCE(35);
-      END_STATE();
-    case 8:
-      if (lookahead == 'a') ADVANCE(11);
-      END_STATE();
-    case 9:
-      if (lookahead == 'h') ADVANCE(12);
-      END_STATE();
-    case 10:
-      if (lookahead == 'l') ADVANCE(42);
-      END_STATE();
-    case 11:
-      if (lookahead == 'p') ADVANCE(9);
-      END_STATE();
-    case 12:
-      if (lookahead == 'q') ADVANCE(10);
-      END_STATE();
-    case 13:
-      if (lookahead == 'r') ADVANCE(8);
-      END_STATE();
-    case 14:
-      if (lookahead == '-' ||
-          lookahead == '=' ||
-          lookahead == '_') ADVANCE(15);
-      if (!eof &&
-          lookahead != '%') ADVANCE(23);
-      END_STATE();
-    case 15:
-      if (!eof &&
-          lookahead != '%' &&
-          lookahead != '-' &&
-          lookahead != '=' &&
-          lookahead != '_') ADVANCE(23);
-      END_STATE();
-    case 16:
-      ACCEPT_TOKEN(ts_builtin_sym_end);
-      END_STATE();
-    case 17:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(aux_sym_code_token1);
-      if (lookahead == '%') ADVANCE(4);
-      if (lookahead == '>') ADVANCE(32);
-      if (!eof &&
-          lookahead != '-' &&
-          lookahead != '=' &&
-          lookahead != '>' &&
-          lookahead != '_') ADVANCE(23);
-      END_STATE();
-    case 18:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(aux_sym_code_token1);
-      if (lookahead == '%') ADVANCE(28);
-      if (!eof &&
-          lookahead != '-' &&
-          lookahead != '=' &&
-          lookahead != '_') ADVANCE(23);
-      END_STATE();
-    case 19:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(aux_sym_code_token1);
-      if (lookahead == '%') ADVANCE(5);
-      if (lookahead == '-' ||
-          lookahead == '=' ||
-          lookahead == '_') ADVANCE(14);
-      if (!eof) ADVANCE(23);
-      END_STATE();
-    case 20:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(aux_sym_code_token1);
-      if (lookahead == '%') ADVANCE(6);
-      if (lookahead == '-' ||
-          lookahead == '=' ||
-          lookahead == '_') ADVANCE(14);
-      if (!eof) ADVANCE(23);
-      END_STATE();
-    case 21:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(aux_sym_code_token1);
-      if (lookahead == '%') ADVANCE(7);
-      if (lookahead == '-' ||
-          lookahead == '=' ||
-          lookahead == '_') ADVANCE(14);
-      if (!eof) ADVANCE(23);
-      END_STATE();
-    case 22:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(aux_sym_code_token1);
-      if (lookahead == '-' ||
-          lookahead == '=' ||
-          lookahead == '_') ADVANCE(14);
-      if (!eof &&
-          lookahead != '%') ADVANCE(23);
-      END_STATE();
-    case 23:
-      ts_lex_state_23:
-      if (!eof &&
-          lookahead != '%' &&
-          lookahead != '-' &&
-          lookahead != '=' &&
-          lookahead != '_') TS_LEX_REPEAT(false, ts_lex_state_23);
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(aux_sym_code_token1);
-      END_STATE();
-    case 24:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_PERCENT_PERCENT_GT);
-      END_STATE();
-    case 25:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(aux_sym_content_token1);
-      if (lookahead == '%') ADVANCE(28);
-      if (!eof &&
-          lookahead != '<') ADVANCE(26);
-      END_STATE();
-    case 26:
-      ts_lex_state_26:
-      if (!eof &&
-          lookahead != '<') TS_LEX_REPEAT(false, ts_lex_state_26);
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(aux_sym_content_token1);
-      END_STATE();
-    case 27:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_LT_PERCENT_PERCENT);
-      END_STATE();
-    case 28:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_LT_PERCENT);
-      TS_LEX_ADVANCE_MAP_SORTED(ts_lex_advance_map_0);
-      END_STATE();
-    case 29:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_LT_PERCENT_);
-      END_STATE();
-    case 30:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_LT_PERCENT_PIPE);
-      if (lookahead == '=') ADVANCE(38);
-      END_STATE();
-    case 31:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_LT_PERCENT_TILDE);
-      END_STATE();
-    case 32:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_PERCENT_GT);
-      END_STATE();
-    case 33:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_DASH_PERCENT_GT);
-      END_STATE();
-    case 34:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_EQ_PERCENT_GT);
-      END_STATE();
-    case 35:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym__PERCENT_GT);
-      END_STATE();
-    case 36:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_LT_PERCENT_EQ);
-      if (lookahead == '=') ADVANCE(37);
-      END_STATE();
-    case 37:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_LT_PERCENT_EQ_EQ);
-      END_STATE();
-    case 38:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_LT_PERCENT_PIPE_EQ);
-      if (lookahead == '=') ADVANCE(39);
-      END_STATE();
-    case 39:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_LT_PERCENT_PIPE_EQ_EQ);
-      END_STATE();
-    case 40:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_LT_PERCENT_DASH);
-      END_STATE();
-    case 41:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_LT_PERCENT_POUND);
-      END_STATE();
-    case 42:
-      lexer->mark_start(lexer, &start_tags[0]);
-      ACCEPT_TOKEN(anon_sym_LT_PERCENTgraphql);
-      END_STATE();
-    default:
-      return false;
-  }
-}
 
 static const TSLexerMode ts_lex_modes[] = {
   [0] = {.lex_state = 0, .lex_state_after_extra = 0, .external_lex_state = 0, .external_lex_state_after_extra = 0, .reserved_word_set_id = 0},
@@ -553,7 +233,7 @@ static const uint8_t ts_lex_mode_ids[STATE_COUNT] = {
   2, 1, 1, 2, 0, 1, 3, 1, 3, 3, 0, 
 };
 
-static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
+static const uint16_t ts_parse_table[LARGE_STATE_COUNT][TOKEN_COUNT] = {
   [STATE(0)] = {
     [ts_builtin_sym_end] = ACTIONS(1),
     [aux_sym_code_token1] = ACTIONS(1),
@@ -576,191 +256,162 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_LT_PERCENTgraphql] = ACTIONS(1),
   },
   [STATE(1)] = {
-    [sym_template] = STATE(13),
-    [sym_content] = STATE(2),
-    [sym_directive] = STATE(2),
-    [sym_output_directive] = STATE(2),
-    [sym_comment_directive] = STATE(2),
-    [sym_graphql_directive] = STATE(2),
-    [aux_sym_template_repeat1] = STATE(2),
-    [aux_sym_content_repeat1] = STATE(4),
-    [ts_builtin_sym_end] = ACTIONS(2),
+    [ts_builtin_sym_end] = ACTIONS(32770),
     [aux_sym_content_token1] = ACTIONS(3),
-    [anon_sym_LT_PERCENT_PERCENT] = ACTIONS(4),
-    [anon_sym_LT_PERCENT] = ACTIONS(5),
-    [anon_sym_LT_PERCENT_] = ACTIONS(6),
-    [anon_sym_LT_PERCENT_PIPE] = ACTIONS(5),
-    [anon_sym_LT_PERCENT_TILDE] = ACTIONS(6),
-    [anon_sym_LT_PERCENT_EQ] = ACTIONS(7),
-    [anon_sym_LT_PERCENT_EQ_EQ] = ACTIONS(8),
-    [anon_sym_LT_PERCENT_PIPE_EQ] = ACTIONS(7),
-    [anon_sym_LT_PERCENT_PIPE_EQ_EQ] = ACTIONS(8),
-    [anon_sym_LT_PERCENT_DASH] = ACTIONS(8),
-    [anon_sym_LT_PERCENT_POUND] = ACTIONS(9),
-    [anon_sym_LT_PERCENTgraphql] = ACTIONS(10),
+    [anon_sym_LT_PERCENT_PERCENT] = ACTIONS(32771),
+    [anon_sym_LT_PERCENT] = ACTIONS(4),
+    [anon_sym_LT_PERCENT_] = ACTIONS(32772),
+    [anon_sym_LT_PERCENT_PIPE] = ACTIONS(4),
+    [anon_sym_LT_PERCENT_TILDE] = ACTIONS(32772),
+    [anon_sym_LT_PERCENT_EQ] = ACTIONS(5),
+    [anon_sym_LT_PERCENT_EQ_EQ] = ACTIONS(32773),
+    [anon_sym_LT_PERCENT_PIPE_EQ] = ACTIONS(5),
+    [anon_sym_LT_PERCENT_PIPE_EQ_EQ] = ACTIONS(32773),
+    [anon_sym_LT_PERCENT_DASH] = ACTIONS(32773),
+    [anon_sym_LT_PERCENT_POUND] = ACTIONS(32774),
+    [anon_sym_LT_PERCENTgraphql] = ACTIONS(32775),
   },
   [STATE(2)] = {
-    [sym_content] = STATE(3),
-    [sym_directive] = STATE(3),
-    [sym_output_directive] = STATE(3),
-    [sym_comment_directive] = STATE(3),
-    [sym_graphql_directive] = STATE(3),
-    [aux_sym_template_repeat1] = STATE(3),
-    [aux_sym_content_repeat1] = STATE(4),
-    [ts_builtin_sym_end] = ACTIONS(11),
+    [ts_builtin_sym_end] = ACTIONS(32776),
     [aux_sym_content_token1] = ACTIONS(3),
-    [anon_sym_LT_PERCENT_PERCENT] = ACTIONS(4),
-    [anon_sym_LT_PERCENT] = ACTIONS(5),
-    [anon_sym_LT_PERCENT_] = ACTIONS(6),
-    [anon_sym_LT_PERCENT_PIPE] = ACTIONS(5),
-    [anon_sym_LT_PERCENT_TILDE] = ACTIONS(6),
-    [anon_sym_LT_PERCENT_EQ] = ACTIONS(7),
-    [anon_sym_LT_PERCENT_EQ_EQ] = ACTIONS(8),
-    [anon_sym_LT_PERCENT_PIPE_EQ] = ACTIONS(7),
-    [anon_sym_LT_PERCENT_PIPE_EQ_EQ] = ACTIONS(8),
-    [anon_sym_LT_PERCENT_DASH] = ACTIONS(8),
-    [anon_sym_LT_PERCENT_POUND] = ACTIONS(9),
-    [anon_sym_LT_PERCENTgraphql] = ACTIONS(10),
+    [anon_sym_LT_PERCENT_PERCENT] = ACTIONS(32771),
+    [anon_sym_LT_PERCENT] = ACTIONS(4),
+    [anon_sym_LT_PERCENT_] = ACTIONS(32772),
+    [anon_sym_LT_PERCENT_PIPE] = ACTIONS(4),
+    [anon_sym_LT_PERCENT_TILDE] = ACTIONS(32772),
+    [anon_sym_LT_PERCENT_EQ] = ACTIONS(5),
+    [anon_sym_LT_PERCENT_EQ_EQ] = ACTIONS(32773),
+    [anon_sym_LT_PERCENT_PIPE_EQ] = ACTIONS(5),
+    [anon_sym_LT_PERCENT_PIPE_EQ_EQ] = ACTIONS(32773),
+    [anon_sym_LT_PERCENT_DASH] = ACTIONS(32773),
+    [anon_sym_LT_PERCENT_POUND] = ACTIONS(32774),
+    [anon_sym_LT_PERCENTgraphql] = ACTIONS(32775),
   },
   [STATE(3)] = {
-    [sym_content] = STATE(3),
-    [sym_directive] = STATE(3),
-    [sym_output_directive] = STATE(3),
-    [sym_comment_directive] = STATE(3),
-    [sym_graphql_directive] = STATE(3),
-    [aux_sym_template_repeat1] = STATE(3),
-    [aux_sym_content_repeat1] = STATE(4),
-    [ts_builtin_sym_end] = ACTIONS(12),
-    [aux_sym_content_token1] = ACTIONS(13),
-    [anon_sym_LT_PERCENT_PERCENT] = ACTIONS(15),
-    [anon_sym_LT_PERCENT] = ACTIONS(17),
-    [anon_sym_LT_PERCENT_] = ACTIONS(19),
-    [anon_sym_LT_PERCENT_PIPE] = ACTIONS(17),
-    [anon_sym_LT_PERCENT_TILDE] = ACTIONS(19),
-    [anon_sym_LT_PERCENT_EQ] = ACTIONS(21),
-    [anon_sym_LT_PERCENT_EQ_EQ] = ACTIONS(23),
-    [anon_sym_LT_PERCENT_PIPE_EQ] = ACTIONS(21),
-    [anon_sym_LT_PERCENT_PIPE_EQ_EQ] = ACTIONS(23),
-    [anon_sym_LT_PERCENT_DASH] = ACTIONS(23),
-    [anon_sym_LT_PERCENT_POUND] = ACTIONS(25),
-    [anon_sym_LT_PERCENTgraphql] = ACTIONS(27),
+    [ts_builtin_sym_end] = ACTIONS(32777),
+    [aux_sym_content_token1] = ACTIONS(9),
+    [anon_sym_LT_PERCENT_PERCENT] = ACTIONS(32777),
+    [anon_sym_LT_PERCENT] = ACTIONS(9),
+    [anon_sym_LT_PERCENT_] = ACTIONS(32777),
+    [anon_sym_LT_PERCENT_PIPE] = ACTIONS(9),
+    [anon_sym_LT_PERCENT_TILDE] = ACTIONS(32777),
+    [anon_sym_LT_PERCENT_EQ] = ACTIONS(9),
+    [anon_sym_LT_PERCENT_EQ_EQ] = ACTIONS(32777),
+    [anon_sym_LT_PERCENT_PIPE_EQ] = ACTIONS(9),
+    [anon_sym_LT_PERCENT_PIPE_EQ_EQ] = ACTIONS(32777),
+    [anon_sym_LT_PERCENT_DASH] = ACTIONS(32777),
+    [anon_sym_LT_PERCENT_POUND] = ACTIONS(32777),
+    [anon_sym_LT_PERCENTgraphql] = ACTIONS(32777),
   },
   [STATE(4)] = {
-    [aux_sym_content_repeat1] = STATE(5),
-    [ts_builtin_sym_end] = ACTIONS(29),
-    [aux_sym_content_token1] = ACTIONS(30),
-    [anon_sym_LT_PERCENT_PERCENT] = ACTIONS(31),
-    [anon_sym_LT_PERCENT] = ACTIONS(32),
-    [anon_sym_LT_PERCENT_] = ACTIONS(29),
-    [anon_sym_LT_PERCENT_PIPE] = ACTIONS(32),
-    [anon_sym_LT_PERCENT_TILDE] = ACTIONS(29),
-    [anon_sym_LT_PERCENT_EQ] = ACTIONS(32),
-    [anon_sym_LT_PERCENT_EQ_EQ] = ACTIONS(29),
-    [anon_sym_LT_PERCENT_PIPE_EQ] = ACTIONS(32),
-    [anon_sym_LT_PERCENT_PIPE_EQ_EQ] = ACTIONS(29),
-    [anon_sym_LT_PERCENT_DASH] = ACTIONS(29),
-    [anon_sym_LT_PERCENT_POUND] = ACTIONS(29),
-    [anon_sym_LT_PERCENTgraphql] = ACTIONS(29),
+    [ts_builtin_sym_end] = ACTIONS(32778),
+    [aux_sym_content_token1] = ACTIONS(11),
+    [anon_sym_LT_PERCENT_PERCENT] = ACTIONS(32779),
+    [anon_sym_LT_PERCENT] = ACTIONS(10),
+    [anon_sym_LT_PERCENT_] = ACTIONS(32778),
+    [anon_sym_LT_PERCENT_PIPE] = ACTIONS(10),
+    [anon_sym_LT_PERCENT_TILDE] = ACTIONS(32778),
+    [anon_sym_LT_PERCENT_EQ] = ACTIONS(10),
+    [anon_sym_LT_PERCENT_EQ_EQ] = ACTIONS(32778),
+    [anon_sym_LT_PERCENT_PIPE_EQ] = ACTIONS(10),
+    [anon_sym_LT_PERCENT_PIPE_EQ_EQ] = ACTIONS(32778),
+    [anon_sym_LT_PERCENT_DASH] = ACTIONS(32778),
+    [anon_sym_LT_PERCENT_POUND] = ACTIONS(32778),
+    [anon_sym_LT_PERCENTgraphql] = ACTIONS(32778),
   },
   [STATE(5)] = {
-    [aux_sym_content_repeat1] = STATE(5),
-    [ts_builtin_sym_end] = ACTIONS(33),
-    [aux_sym_content_token1] = ACTIONS(34),
-    [anon_sym_LT_PERCENT_PERCENT] = ACTIONS(36),
-    [anon_sym_LT_PERCENT] = ACTIONS(38),
-    [anon_sym_LT_PERCENT_] = ACTIONS(33),
-    [anon_sym_LT_PERCENT_PIPE] = ACTIONS(38),
-    [anon_sym_LT_PERCENT_TILDE] = ACTIONS(33),
-    [anon_sym_LT_PERCENT_EQ] = ACTIONS(38),
-    [anon_sym_LT_PERCENT_EQ_EQ] = ACTIONS(33),
-    [anon_sym_LT_PERCENT_PIPE_EQ] = ACTIONS(38),
-    [anon_sym_LT_PERCENT_PIPE_EQ_EQ] = ACTIONS(33),
-    [anon_sym_LT_PERCENT_DASH] = ACTIONS(33),
-    [anon_sym_LT_PERCENT_POUND] = ACTIONS(33),
-    [anon_sym_LT_PERCENTgraphql] = ACTIONS(33),
+    [ts_builtin_sym_end] = ACTIONS(32780),
+    [aux_sym_content_token1] = ACTIONS(12),
+    [anon_sym_LT_PERCENT_PERCENT] = ACTIONS(32780),
+    [anon_sym_LT_PERCENT] = ACTIONS(12),
+    [anon_sym_LT_PERCENT_] = ACTIONS(32780),
+    [anon_sym_LT_PERCENT_PIPE] = ACTIONS(12),
+    [anon_sym_LT_PERCENT_TILDE] = ACTIONS(32780),
+    [anon_sym_LT_PERCENT_EQ] = ACTIONS(12),
+    [anon_sym_LT_PERCENT_EQ_EQ] = ACTIONS(32780),
+    [anon_sym_LT_PERCENT_PIPE_EQ] = ACTIONS(12),
+    [anon_sym_LT_PERCENT_PIPE_EQ_EQ] = ACTIONS(32780),
+    [anon_sym_LT_PERCENT_DASH] = ACTIONS(32780),
+    [anon_sym_LT_PERCENT_POUND] = ACTIONS(32780),
+    [anon_sym_LT_PERCENTgraphql] = ACTIONS(32780),
   },
   [STATE(6)] = {
-    [aux_sym_code_repeat1] = STATE(19),
-    [aux_sym_code_token1] = ACTIONS(39),
-    [anon_sym_PERCENT_PERCENT_GT] = ACTIONS(40),
-    [anon_sym_PERCENT_GT] = ACTIONS(41),
-    [anon_sym_DASH_PERCENT_GT] = ACTIONS(41),
-    [anon_sym_EQ_PERCENT_GT] = ACTIONS(41),
-    [anon_sym__PERCENT_GT] = ACTIONS(41),
+    [aux_sym_code_token1] = ACTIONS(13),
+    [anon_sym_PERCENT_PERCENT_GT] = ACTIONS(32781),
+    [anon_sym_PERCENT_GT] = ACTIONS(32782),
+    [anon_sym_DASH_PERCENT_GT] = ACTIONS(32782),
+    [anon_sym_EQ_PERCENT_GT] = ACTIONS(32782),
+    [anon_sym__PERCENT_GT] = ACTIONS(32782),
   },
   [STATE(7)] = {
-    [anon_sym_PERCENT_GT] = ACTIONS(42),
-    [anon_sym_DASH_PERCENT_GT] = ACTIONS(42),
-    [anon_sym_EQ_PERCENT_GT] = ACTIONS(42),
-    [anon_sym__PERCENT_GT] = ACTIONS(42),
+    [anon_sym_PERCENT_GT] = ACTIONS(32783),
+    [anon_sym_DASH_PERCENT_GT] = ACTIONS(32783),
+    [anon_sym_EQ_PERCENT_GT] = ACTIONS(32783),
+    [anon_sym__PERCENT_GT] = ACTIONS(32783),
   },
   [STATE(8)] = {
-    [ts_builtin_sym_end] = ACTIONS(43),
-    [aux_sym_content_token1] = ACTIONS(44),
-    [anon_sym_LT_PERCENT_PERCENT] = ACTIONS(43),
-    [anon_sym_LT_PERCENT] = ACTIONS(44),
-    [anon_sym_LT_PERCENT_] = ACTIONS(43),
-    [anon_sym_LT_PERCENT_PIPE] = ACTIONS(44),
-    [anon_sym_LT_PERCENT_TILDE] = ACTIONS(43),
-    [anon_sym_LT_PERCENT_EQ] = ACTIONS(44),
-    [anon_sym_LT_PERCENT_EQ_EQ] = ACTIONS(43),
-    [anon_sym_LT_PERCENT_PIPE_EQ] = ACTIONS(44),
-    [anon_sym_LT_PERCENT_PIPE_EQ_EQ] = ACTIONS(43),
-    [anon_sym_LT_PERCENT_DASH] = ACTIONS(43),
-    [anon_sym_LT_PERCENT_POUND] = ACTIONS(43),
-    [anon_sym_LT_PERCENTgraphql] = ACTIONS(43),
+    [ts_builtin_sym_end] = ACTIONS(32784),
+    [aux_sym_content_token1] = ACTIONS(16),
+    [anon_sym_LT_PERCENT_PERCENT] = ACTIONS(32784),
+    [anon_sym_LT_PERCENT] = ACTIONS(16),
+    [anon_sym_LT_PERCENT_] = ACTIONS(32784),
+    [anon_sym_LT_PERCENT_PIPE] = ACTIONS(16),
+    [anon_sym_LT_PERCENT_TILDE] = ACTIONS(32784),
+    [anon_sym_LT_PERCENT_EQ] = ACTIONS(16),
+    [anon_sym_LT_PERCENT_EQ_EQ] = ACTIONS(32784),
+    [anon_sym_LT_PERCENT_PIPE_EQ] = ACTIONS(16),
+    [anon_sym_LT_PERCENT_PIPE_EQ_EQ] = ACTIONS(32784),
+    [anon_sym_LT_PERCENT_DASH] = ACTIONS(32784),
+    [anon_sym_LT_PERCENT_POUND] = ACTIONS(32784),
+    [anon_sym_LT_PERCENTgraphql] = ACTIONS(32784),
   },
   [STATE(9)] = {
-    [sym_code] = STATE(15),
-    [aux_sym_code_repeat1] = STATE(6),
-    [aux_sym_code_token1] = ACTIONS(45),
-    [anon_sym_PERCENT_PERCENT_GT] = ACTIONS(46),
-    [anon_sym_PERCENT_GT] = ACTIONS(47),
-    [anon_sym_DASH_PERCENT_GT] = ACTIONS(47),
-    [anon_sym_EQ_PERCENT_GT] = ACTIONS(47),
-    [anon_sym__PERCENT_GT] = ACTIONS(47),
+    [aux_sym_code_token1] = ACTIONS(17),
+    [anon_sym_PERCENT_PERCENT_GT] = ACTIONS(32785),
+    [anon_sym_PERCENT_GT] = ACTIONS(32786),
+    [anon_sym_DASH_PERCENT_GT] = ACTIONS(32786),
+    [anon_sym_EQ_PERCENT_GT] = ACTIONS(32786),
+    [anon_sym__PERCENT_GT] = ACTIONS(32786),
   },
   [STATE(10)] = {
-    [ts_builtin_sym_end] = ACTIONS(48),
-    [aux_sym_content_token1] = ACTIONS(49),
-    [anon_sym_LT_PERCENT_PERCENT] = ACTIONS(48),
-    [anon_sym_LT_PERCENT] = ACTIONS(49),
-    [anon_sym_LT_PERCENT_] = ACTIONS(48),
-    [anon_sym_LT_PERCENT_PIPE] = ACTIONS(49),
-    [anon_sym_LT_PERCENT_TILDE] = ACTIONS(48),
-    [anon_sym_LT_PERCENT_EQ] = ACTIONS(49),
-    [anon_sym_LT_PERCENT_EQ_EQ] = ACTIONS(48),
-    [anon_sym_LT_PERCENT_PIPE_EQ] = ACTIONS(49),
-    [anon_sym_LT_PERCENT_PIPE_EQ_EQ] = ACTIONS(48),
-    [anon_sym_LT_PERCENT_DASH] = ACTIONS(48),
-    [anon_sym_LT_PERCENT_POUND] = ACTIONS(48),
-    [anon_sym_LT_PERCENTgraphql] = ACTIONS(48),
+    [ts_builtin_sym_end] = ACTIONS(32787),
+    [aux_sym_content_token1] = ACTIONS(19),
+    [anon_sym_LT_PERCENT_PERCENT] = ACTIONS(32787),
+    [anon_sym_LT_PERCENT] = ACTIONS(19),
+    [anon_sym_LT_PERCENT_] = ACTIONS(32787),
+    [anon_sym_LT_PERCENT_PIPE] = ACTIONS(19),
+    [anon_sym_LT_PERCENT_TILDE] = ACTIONS(32787),
+    [anon_sym_LT_PERCENT_EQ] = ACTIONS(19),
+    [anon_sym_LT_PERCENT_EQ_EQ] = ACTIONS(32787),
+    [anon_sym_LT_PERCENT_PIPE_EQ] = ACTIONS(19),
+    [anon_sym_LT_PERCENT_PIPE_EQ_EQ] = ACTIONS(32787),
+    [anon_sym_LT_PERCENT_DASH] = ACTIONS(32787),
+    [anon_sym_LT_PERCENT_POUND] = ACTIONS(32787),
+    [anon_sym_LT_PERCENTgraphql] = ACTIONS(32787),
   },
   [STATE(11)] = {
-    [sym_code] = STATE(7),
-    [aux_sym_code_repeat1] = STATE(6),
-    [aux_sym_code_token1] = ACTIONS(45),
-    [anon_sym_PERCENT_PERCENT_GT] = ACTIONS(46),
-    [anon_sym_PERCENT_GT] = ACTIONS(50),
-    [anon_sym_DASH_PERCENT_GT] = ACTIONS(50),
-    [anon_sym_EQ_PERCENT_GT] = ACTIONS(50),
-    [anon_sym__PERCENT_GT] = ACTIONS(50),
+    [aux_sym_code_token1] = ACTIONS(17),
+    [anon_sym_PERCENT_PERCENT_GT] = ACTIONS(32785),
+    [anon_sym_PERCENT_GT] = ACTIONS(32788),
+    [anon_sym_DASH_PERCENT_GT] = ACTIONS(32788),
+    [anon_sym_EQ_PERCENT_GT] = ACTIONS(32788),
+    [anon_sym__PERCENT_GT] = ACTIONS(32788),
   },
   [STATE(12)] = {
-    [ts_builtin_sym_end] = ACTIONS(51),
-    [aux_sym_content_token1] = ACTIONS(52),
-    [anon_sym_LT_PERCENT_PERCENT] = ACTIONS(51),
-    [anon_sym_LT_PERCENT] = ACTIONS(52),
-    [anon_sym_LT_PERCENT_] = ACTIONS(51),
-    [anon_sym_LT_PERCENT_PIPE] = ACTIONS(52),
-    [anon_sym_LT_PERCENT_TILDE] = ACTIONS(51),
-    [anon_sym_LT_PERCENT_EQ] = ACTIONS(52),
-    [anon_sym_LT_PERCENT_EQ_EQ] = ACTIONS(51),
-    [anon_sym_LT_PERCENT_PIPE_EQ] = ACTIONS(52),
-    [anon_sym_LT_PERCENT_PIPE_EQ_EQ] = ACTIONS(51),
-    [anon_sym_LT_PERCENT_DASH] = ACTIONS(51),
-    [anon_sym_LT_PERCENT_POUND] = ACTIONS(51),
-    [anon_sym_LT_PERCENTgraphql] = ACTIONS(51),
+    [ts_builtin_sym_end] = ACTIONS(32789),
+    [aux_sym_content_token1] = ACTIONS(21),
+    [anon_sym_LT_PERCENT_PERCENT] = ACTIONS(32789),
+    [anon_sym_LT_PERCENT] = ACTIONS(21),
+    [anon_sym_LT_PERCENT_] = ACTIONS(32789),
+    [anon_sym_LT_PERCENT_PIPE] = ACTIONS(21),
+    [anon_sym_LT_PERCENT_TILDE] = ACTIONS(32789),
+    [anon_sym_LT_PERCENT_EQ] = ACTIONS(21),
+    [anon_sym_LT_PERCENT_EQ_EQ] = ACTIONS(32789),
+    [anon_sym_LT_PERCENT_PIPE_EQ] = ACTIONS(21),
+    [anon_sym_LT_PERCENT_PIPE_EQ_EQ] = ACTIONS(32789),
+    [anon_sym_LT_PERCENT_DASH] = ACTIONS(32789),
+    [anon_sym_LT_PERCENT_POUND] = ACTIONS(32789),
+    [anon_sym_LT_PERCENTgraphql] = ACTIONS(32789),
   },
 };
 
@@ -768,160 +419,137 @@ static const uint16_t ts_small_parse_table[] = {
   [0] =
     13, 7, 2, 2, 2, 2, 2, 2, 6, 4, 
   [10] =
-    1, 0, 53, 
-  [13] =
-    0, 
-  [14] =
-    0, 1, 41128, 
-  [17] =
-    0, 2, 16721, 15, 
-  [21] =
-    2, 55, 14, 0, 54, 17, 0, 
-  [28] =
-    1, 56, 4, 9, 10, 11, 12, 
-  [35] =
-    6, 1, 45, 2, 46, 9, 57, 10, 57, 11, 57, 12, 57, 
-  [48] =
-    2, 21, 20, 28, 6, 
-  [53] =
-    2, 59, 14, 0, 58, 17, 0, 
-  [60] =
-    2, 61, 14, 0, 60, 17, 0, 
-  [67] =
-    6, 1, 62, 2, 64, 9, 66, 10, 66, 11, 66, 12, 66, 
-  [80] =
-    1, 28, 65535, 
+    2686, 841, 0, 0, 0, 0, 
+  [16] =
+    42, 24576, 45, 0, 57, 0, 69, 32768, 72, 32768, 75, 32768, 78, 32768, 83, 24576, 
+    123, 32768, 153, 32768, 177, 32768, 196, 32768, 153, 32768, 
+  [42] =
+    1, 1, 12240, 
+  [45] =
+    2, 4, 1, 29, 3, 6, 22, 23, 24, 25, 26, 27, 
+  [57] =
+    2, 4, 1, 29, 65535, 6, 22, 23, 24, 25, 26, 27, 
+  [69] =
+    1, 29, 5, 
+  [72] =
+    1, 29, 65535, 
+  [75] =
+    1, 28, 19, 
+  [78] =
+    2, 21, 15, 28, 6, 
   [83] =
-    1, 67, 4, 9, 10, 11, 12, 
-  [90] =
-    2, 69, 14, 0, 68, 17, 0, 
-  [97] =
-    3, 1, 70, 2, 71, 9, 72, 
-  [104] =
-    2, 21, 26, 28, 24, 
-  [109] =
-    2, 74, 14, 0, 73, 17, 0, 
-  [116] =
-    0, 0, 
-  [118] =
-    116, 0, 13, 32768, 
-  [122] =
-    518, 0, 0, 3, 75, 76, 41, 
-  [129] =
-    256, 0, 25, 
-  [132] =
-    1, 1, 4096, 
+    1, 1, 4128, 
+  [86] =
+    1, 0, 32790, 
+  [89] =
+    0, 1, 41128, 
+  [92] =
+    0, 2, 16721, 15, 
+  [96] =
+    2, 23, 89, 0, 32791, 92, 0, 
+  [103] =
+    1, 32792, 4, 9, 10, 11, 12, 
+  [110] =
+    6, 1, 17, 2, 32785, 9, 32793, 10, 32793, 11, 32793, 12, 32793, 
+  [123] =
+    2, 21, 20, 28, 6, 
+  [128] =
+    2, 26, 89, 0, 32794, 92, 0, 
   [135] =
-    132, 0, 129, 16384, 
-  [139] =
-    518, 0, 0, 3, 77, 79, 66, 
-  [146] =
-    132, 0, 80, 32768, 
-  [150] =
-    1, 9, 81, 
+    2, 27, 89, 0, 32795, 92, 0, 
+  [142] =
+    2, 28, 1, 1, 32796, 5, 2, 9, 10, 11, 12, 
+  [153] =
+    1, 28, 65535, 
+  [156] =
+    1, 32797, 4, 9, 10, 11, 12, 
+  [163] =
+    2, 30, 89, 0, 32798, 92, 0, 
+  [170] =
+    3, 1, 31, 2, 32799, 9, 32800, 
+  [177] =
+    2, 21, 26, 28, 24, 
+  [182] =
+    2, 33, 89, 0, 32801, 92, 0, 
+  [189] =
+    3, 1, 34, 2, 32802, 9, 32782, 
+  [196] =
+    1, 28, 25, 
+  [199] =
+    3, 1, 28, 2, 32796, 9, 32796, 
+  [206] =
+    1, 9, 32803, 
 };
 
 static const uint32_t ts_small_parse_table_map[] = {
-  [SMALL_STATE(13) * 2] = 2147483658, 2147483661,
-  [SMALL_STATE(14) * 2] = 3221225493, 2147483661,
-  [SMALL_STATE(15) * 2] = 28, 2147483661,
-  [SMALL_STATE(16) * 2] = 2147483683, 2147483696,
-  [SMALL_STATE(17) * 2] = 3221225525, 2147483661,
-  [SMALL_STATE(18) * 2] = 3221225532, 2147483661,
-  [SMALL_STATE(19) * 2] = 2147483715, 2147483728,
-  [SMALL_STATE(20) * 2] = 83, 2147483661,
-  [SMALL_STATE(21) * 2] = 3221225562, 2147483661,
-  [SMALL_STATE(22) * 2] = 2147483745, 2147483752,
-  [SMALL_STATE(23) * 2] = 3221225581, 536871030,
-  [SMALL_STATE(24) * 2] = 1073741946, 536871047,
-  [SMALL_STATE(25) * 2] = 1073741963, 536871058,
-  [SMALL_STATE(26) * 2] = 2147483798, 536871030,
+  [SMALL_STATE(13)] = 2147483734,
+  [SMALL_STATE(14)] = 3221225568,
+  [SMALL_STATE(15)] = 103,
+  [SMALL_STATE(16)] = 2147483758,
+  [SMALL_STATE(17)] = 3221225600,
+  [SMALL_STATE(18)] = 3221225607,
+  [SMALL_STATE(19)] = 142,
+  [SMALL_STATE(20)] = 156,
+  [SMALL_STATE(21)] = 3221225635,
+  [SMALL_STATE(22)] = 2147483818,
+  [SMALL_STATE(23)] = 3221225654,
+  [SMALL_STATE(24)] = 2147483837,
+  [SMALL_STATE(25)] = 2147483847,
+  [SMALL_STATE(26)] = 2147483854,
 };
 
 static const uint32_t ts_parse_actions[] = {
-  [0] = ACTION_LIST(0, false),
-  [1] = ACTION_LIST(1, false) | RECOVER(),
-  [2] = ACTION_LIST(1, true) | REDUCE(82),
-  [3] = ACTION_LIST(1, false) | SHIFT(4),
-  [4] = ACTION_LIST(1, true) | SHIFT(4),
-  [5] = ACTION_LIST(1, false) | SHIFT(11),
-  [6] = ACTION_LIST(1, true) | SHIFT(11),
-  [7] = ACTION_LIST(1, false) | SHIFT(9),
-  [8] = ACTION_LIST(1, true) | SHIFT(9),
-  [9] = ACTION_LIST(1, true) | SHIFT(16),
-  [10] = ACTION_LIST(1, true) | SHIFT(22),
-  [11] = ACTION_LIST(1, true) | REDUCE(84),
-  [12] = ACTION_LIST(1, true) | REDUCE(86),
-  [13] = ACTION_LIST(2, false) | REDUCE(86), SHIFT_REPEAT(4),
-  [15] = ACTION_LIST(2, true) | REDUCE(86), SHIFT_REPEAT(4),
-  [17] = ACTION_LIST(2, false) | REDUCE(86), SHIFT_REPEAT(11),
-  [19] = ACTION_LIST(2, true) | REDUCE(86), SHIFT_REPEAT(11),
-  [21] = ACTION_LIST(2, false) | REDUCE(86), SHIFT_REPEAT(9),
-  [23] = ACTION_LIST(2, true) | REDUCE(86), SHIFT_REPEAT(9),
-  [25] = ACTION_LIST(2, true) | REDUCE(86), SHIFT_REPEAT(16),
-  [27] = ACTION_LIST(2, true) | REDUCE(86), SHIFT_REPEAT(22),
-  [29] = ACTION_LIST(1, true) | REDUCE(88),
-  [30] = ACTION_LIST(1, false) | SHIFT(5),
-  [31] = ACTION_LIST(1, true) | SHIFT(5),
-  [32] = ACTION_LIST(1, false) | REDUCE(88),
-  [33] = ACTION_LIST(1, true) | REDUCE(90),
-  [34] = ACTION_LIST(2, false) | REDUCE(90), SHIFT_REPEAT(5),
-  [36] = ACTION_LIST(2, true) | REDUCE(90), SHIFT_REPEAT(5),
-  [38] = ACTION_LIST(1, false) | REDUCE(90),
-  [39] = ACTION_LIST(1, false) | SHIFT(19),
-  [40] = ACTION_LIST(1, true) | SHIFT(19),
-  [41] = ACTION_LIST(1, true) | REDUCE(92),
-  [42] = ACTION_LIST(1, true) | SHIFT(8),
-  [43] = ACTION_LIST(1, true) | REDUCE(94),
-  [44] = ACTION_LIST(1, false) | REDUCE(94),
-  [45] = ACTION_LIST(1, false) | SHIFT(6),
-  [46] = ACTION_LIST(1, true) | SHIFT(6),
-  [47] = ACTION_LIST(1, true) | SHIFT(10),
-  [48] = ACTION_LIST(1, true) | REDUCE(96),
-  [49] = ACTION_LIST(1, false) | REDUCE(96),
-  [50] = ACTION_LIST(1, true) | SHIFT(12),
-  [51] = ACTION_LIST(1, true) | REDUCE(98),
-  [52] = ACTION_LIST(1, false) | REDUCE(98),
-  [53] = ACTION_LIST(1, true) | ACCEPT_INPUT(),
-  [54] = ACTION_LIST(1, true) | REDUCE(100),
-  [55] = ACTION_LIST(1, false) | REDUCE(100),
-  [56] = ACTION_LIST(1, true) | SHIFT(14),
-  [57] = ACTION_LIST(1, true) | SHIFT(17),
-  [58] = ACTION_LIST(1, true) | REDUCE(102),
-  [59] = ACTION_LIST(1, false) | REDUCE(102),
-  [60] = ACTION_LIST(1, true) | REDUCE(104),
-  [61] = ACTION_LIST(1, false) | REDUCE(104),
-  [62] = ACTION_LIST(2, false) | REDUCE(106), SHIFT_REPEAT(19),
-  [64] = ACTION_LIST(2, true) | REDUCE(106), SHIFT_REPEAT(19),
-  [66] = ACTION_LIST(1, true) | REDUCE(106),
-  [67] = ACTION_LIST(1, true) | SHIFT(18),
-  [68] = ACTION_LIST(1, true) | REDUCE(108),
-  [69] = ACTION_LIST(1, false) | REDUCE(108),
-  [70] = ACTION_LIST(1, false) | SHIFT(24),
-  [71] = ACTION_LIST(1, true) | SHIFT(24),
-  [72] = ACTION_LIST(1, true) | SHIFT(21),
-  [73] = ACTION_LIST(1, true) | REDUCE(110),
-  [74] = ACTION_LIST(1, false) | REDUCE(110),
-  [75] = ACTION_LIST(1, false) | SHIFT(25),
-  [76] = ACTION_LIST(1, true) | SHIFT(25),
-  [77] = ACTION_LIST(2, false) | REDUCE(106), SHIFT_REPEAT(25),
-  [79] = ACTION_LIST(2, true) | REDUCE(106), SHIFT_REPEAT(25),
-  [81] = ACTION_LIST(1, true) | SHIFT(23),
-  [82] = REDUCE_RECORD(sym_template, 0, 0, 0),
-  [84] = REDUCE_RECORD(sym_template, 1, 0, 0),
-  [86] = REDUCE_RECORD(aux_sym_template_repeat1, 2, 0, 0),
-  [88] = REDUCE_RECORD(sym_content, 1, 0, 0),
-  [90] = REDUCE_RECORD(aux_sym_content_repeat1, 2, 0, 0),
-  [92] = REDUCE_RECORD(sym_code, 1, 0, 0),
-  [94] = REDUCE_RECORD(sym_directive, 3, 0, 0),
-  [96] = REDUCE_RECORD(sym_output_directive, 2, 0, 0),
-  [98] = REDUCE_RECORD(sym_directive, 2, 0, 0),
-  [100] = REDUCE_RECORD(sym_output_directive, 3, 0, 0),
-  [102] = REDUCE_RECORD(sym_comment_directive, 2, 0, 0),
-  [104] = REDUCE_RECORD(sym_comment_directive, 3, 0, 1),
-  [106] = REDUCE_RECORD(aux_sym_code_repeat1, 2, 0, 0),
-  [108] = REDUCE_RECORD(sym_graphql_directive, 2, 0, 0),
-  [110] = REDUCE_RECORD(sym_graphql_directive, 3, 0, 0),
+  [0] = ACTION_LIST(0),
+  [1] = ACTION_LIST(1) | RECOVER(),
+  [2] = ACTION_LIST(1) | REDUCE(36),
+  [3] = ACTION_LIST(1) | SHIFT(4),
+  [4] = ACTION_LIST(1) | SHIFT(11),
+  [5] = ACTION_LIST(1) | SHIFT(9),
+  [6] = ACTION_LIST(1) | SHIFT(16),
+  [7] = ACTION_LIST(1) | SHIFT(22),
+  [8] = ACTION_LIST(1) | REDUCE(38),
+  [9] = ACTION_LIST(1) | REDUCE(40),
+  [10] = ACTION_LIST(1) | REDUCE(42),
+  [11] = ACTION_LIST(1) | SHIFT(5),
+  [12] = ACTION_LIST(1) | REDUCE(44),
+  [13] = ACTION_LIST(1) | SHIFT(19),
+  [14] = ACTION_LIST(1) | REDUCE(46),
+  [15] = ACTION_LIST(1) | SHIFT(8),
+  [16] = ACTION_LIST(1) | REDUCE(48),
+  [17] = ACTION_LIST(1) | SHIFT(6),
+  [18] = ACTION_LIST(1) | SHIFT(10),
+  [19] = ACTION_LIST(1) | REDUCE(50),
+  [20] = ACTION_LIST(1) | SHIFT(12),
+  [21] = ACTION_LIST(1) | REDUCE(52),
+  [22] = ACTION_LIST(1) | ACCEPT_INPUT(),
+  [23] = ACTION_LIST(1) | REDUCE(54),
+  [24] = ACTION_LIST(1) | SHIFT(14),
+  [25] = ACTION_LIST(1) | SHIFT(17),
+  [26] = ACTION_LIST(1) | REDUCE(56),
+  [27] = ACTION_LIST(1) | REDUCE(58),
+  [28] = ACTION_LIST(1) | REDUCE(60),
+  [29] = ACTION_LIST(1) | SHIFT(18),
+  [30] = ACTION_LIST(1) | REDUCE(62),
+  [31] = ACTION_LIST(1) | SHIFT(24),
+  [32] = ACTION_LIST(1) | SHIFT(21),
+  [33] = ACTION_LIST(1) | REDUCE(64),
+  [34] = ACTION_LIST(1) | SHIFT(25),
+  [35] = ACTION_LIST(1) | SHIFT(23),
+  [36] = REDUCE_RECORD(sym_template, 0, 0, 0),
+  [38] = REDUCE_RECORD(sym_template, 1, 0, 0),
+  [40] = REDUCE_RECORD(aux_sym_template_repeat1, 2, 0, 0),
+  [42] = REDUCE_RECORD(sym_content, 1, 0, 0),
+  [44] = REDUCE_RECORD(aux_sym_content_repeat1, 2, 0, 0),
+  [46] = REDUCE_RECORD(sym_code, 1, 0, 0),
+  [48] = REDUCE_RECORD(sym_directive, 3, 0, 0),
+  [50] = REDUCE_RECORD(sym_output_directive, 2, 0, 0),
+  [52] = REDUCE_RECORD(sym_directive, 2, 0, 0),
+  [54] = REDUCE_RECORD(sym_output_directive, 3, 0, 0),
+  [56] = REDUCE_RECORD(sym_comment_directive, 2, 0, 0),
+  [58] = REDUCE_RECORD(sym_comment_directive, 3, 0, 1),
+  [60] = REDUCE_RECORD(aux_sym_code_repeat1, 2, 0, 0),
+  [62] = REDUCE_RECORD(sym_graphql_directive, 2, 0, 0),
+  [64] = REDUCE_RECORD(sym_graphql_directive, 3, 0, 0),
 };
 
 #ifdef __cplusplus
@@ -952,18 +580,20 @@ TS_PUBLIC const TSLanguage *tree_sitter_embedded_template(void) {
     .small_parse_table = ts_small_parse_table,
     .small_parse_table_map = ts_small_parse_table_map,
     .parse_actions = ts_parse_actions,
-    .symbol_names = ts_symbol_names,
+    .string_data = (const char *)ts_string_data,
+    .string_data_size = 246,
+    .symbol_name_offsets = ts_symbol_name_offsets,
     .symbol_metadata = ts_symbol_metadata,
     .public_symbol_map = ts_symbol_map,
     .alias_sequences = ts_alias_sequences,
     .alias_sequence_offsets = ts_alias_sequence_offsets,
     .alias_sequence_count = 4,
-    .lex_modes = (const void*)ts_lex_modes,
+    .lex_modes = (const void *)ts_lex_modes,
     .lex_mode_ids = ts_lex_mode_ids,
     .lex_mode_count = 4,
-    .lex_fn = ts_lex,
+    .lex_table = ts_lex_table,
     .name = "embedded_template",
-    .max_reserved_word_set_size = 0,
+    .max_reserved_word_set_size = MAX_RESERVED_WORD_SET_SIZE,
     .metadata = {
       .major_version = 0,
       .minor_version = 25,

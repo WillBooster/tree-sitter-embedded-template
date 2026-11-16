@@ -16,10 +16,10 @@ It parses templating languages such as ERB and EJS, in which scripting code is e
 `<%` and `%>`. This fork extends upstream's version 0.25.0 grammar with EJS output-tag whitespace slurping,
 trimming closers on comments, and the `=%>` closer on statements.
 It generates the parser with the
-[WillBooster/tree-sitter](https://github.com/WillBooster/tree-sitter) generator (ABI `0x5742000c`). The parser loads only
+[WillBooster/tree-sitter](https://github.com/WillBooster/tree-sitter) generator (ABI `0x5742000d`). The parser loads only
 with that fork's runtime ([willbooster-tree-sitter](https://crates.io/crates/willbooster-tree-sitter),
 [@willbooster/web-tree-sitter](https://www.npmjs.com/package/@willbooster/web-tree-sitter)); upstream's runtime rejects it.
-This package targets and is tested with version 20.0.0 or later in the 20.x series.
+This package targets and is tested with version 23.0.0 or later in the 23.x series.
 
 ## Support Scope
 
@@ -31,7 +31,7 @@ may change; such changes are released as new major versions.
 ## Usage
 
 The npm package ships `tree-sitter-embedded_template.wasm` for
-[@willbooster/web-tree-sitter](https://www.npmjs.com/package/@willbooster/web-tree-sitter) version 20.0.0 or later in the 20.x series, which runs in Node.js, Bun, browsers, and Cloudflare Workers.
+[@willbooster/web-tree-sitter](https://www.npmjs.com/package/@willbooster/web-tree-sitter) version 23.0.0 or later in the 23.x series, which runs in Node.js, Bun, browsers, and Cloudflare Workers.
 In Node.js and Bun, load the grammar from its path:
 
 ```js
@@ -80,7 +80,7 @@ In Rust, depend on the [crate](https://crates.io/crates/willbooster-tree-sitter-
 fuzzed with:
 
 ```sh
-cargo add willbooster-tree-sitter@20.0.0 --rename tree-sitter
+cargo add willbooster-tree-sitter@23.0.0 --rename tree-sitter
 cargo add willbooster-tree-sitter-embedded-template --rename tree-sitter-embedded-template
 ```
 
@@ -122,8 +122,7 @@ and the release build regenerate the parsers before compiling them.
   `script/parse-examples`. After a grammar change or a moved pin alters that list, `script/parse-examples` rewrites it;
   review its diff before committing;
 - performance checks (`test/unit/performance.test.ts`) that templates ending in an unclosed directive or containing
-  long runs of delimiter prefix characters parse in linear time and that generated character-scanning lexer loops hoist
-  token marking outside the per-byte loop. It loads the Wasm build through
+  long runs of delimiter prefix characters parse in linear time. It loads the Wasm build through
   @willbooster/web-tree-sitter, which `bun run build/ci` rebuilds after regenerating the parser;
 - a check (`test/unit/runtimeVersion.test.ts`) that `@willbooster/web-tree-sitter` in `package.json` and
   `willbooster-tree-sitter` in `Cargo.lock` are the same version, since the Wasm tests run on the former and the Rust
